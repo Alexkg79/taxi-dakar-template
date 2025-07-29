@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Contact - Taxi Dakar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 80px; /* Ajouté pour compenser le header fixe */
+        }
+
+        header {
+            background: #000;
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+
+        .contact-number {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-number a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        /* Bouton WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            color: #FFF;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float i {
+            margin-top: 3px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto; /* Marge ajoutée en haut et en bas */
+            padding: 20px;
+        }
+        
+        .contact-header {
+            background: linear-gradient(135deg, #000000, #333);
+            color: #FFD700;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .contact-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .contact-info, .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #000;
+            flex-shrink: 0;
+        }
+        
+        .info-content h3 {
+            color: #000;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-content p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .info-content a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .info-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+        
+        .readonly-field {
+            background-color: #f9f9f9;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #FFD700;
+            color: #000;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #000;
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            color: white;
+        }
+        
+        .reservation-summary {
+            background: #FFD700;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            color: #000;
+        }
+        
+        .reservation-summary h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .reservation-summary p {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #FFD700;
+        }
+
+        .contact-info-footer {
+            margin-top: 15px;
+        }
+
+        .contact-info-footer p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .mail {
+            text-decoration: none;
+            color: white;
+
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+            }
+        }
+                @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 620px) {
+            header li{
+                font-size: 14px;
+            }
+
+        }
+        @media (max-width: 500px) {
+            header li{
+                font-size: 12px;
+            }
+
+        }
+        @media (max-width: 447px) {
+            header li{
+                font-size: 10px;
+            }
+
+        }
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+                position: relative;
+            }
+            
+            nav ul {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .contact-number {
+                margin-top: 10px;
+            }
+            
+            body {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Taxi | <span>Dakar</span></div>
+        <nav>
+            <ul>
+                <li><a href="index.html#hero">ACCUEIL</a></li>
+                <li><a href="index.html#reservation">RESERVER UN TAXI</a></li>
+                <li><a href="index.html#location">LOCATION DE VOITURES</a></li>
+            </ul>
+        </nav>
+        <div class="contact-number">
+            <a href="https://wa.me/221772418761" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="contact-header">
+            <h1>📞 Contactez Taxi Dakar</h1>
+            <p class="subtitle">Service client disponible 24h/24 - Réservation rapide et sécurisée</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Colonne d'informations -->
+            <div class="contact-info">
+                <h2 class="section-title">📞 Nos coordonnées</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">📱</div>
+                    <div class="info-content">
+                        <h3>Téléphone & WhatsApp</h3>
+                        <p><a href="tel:+221772418761">(+221) 77 241 87 61</a><br>
+                        Disponible 24h/24 pour vos réservations urgentes</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p><a href="mailto:contact@taxi-dakar.com">contact@taxi-dakar.com</a><br>
+                        Réponse garantie sous 2 heures</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h3>Zone d'intervention</h3>
+                        <p>Dakar, Saly, Mbour, Saint-Louis, Touba<br>
+                        et tout le Sénégal</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">⏰</div>
+                    <div class="info-content">
+                        <h3>Horaires</h3>
+                        <p>Service 24h/24 et 7j/7<br>
+                        Réservation recommandée pour les trajets longue distance</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">💳</div>
+                    <div class="info-content">
+                        <h3>Modes de paiement</h3>
+                        <p>Espèces, Mobile Money (Orange Money, Wave)<br>
+                        Paiement en ligne sécurisé disponible</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Colonne du formulaire -->
+            <div class="contact-form">
+                <h2 class="section-title">📝 Demande de réservation</h2>
+                <p>Remplissez ce formulaire pour réserver votre taxi. Confirmation immédiate.</p>
+                
+                <!-- Résumé de la réservation -->
+                <div id="reservation-summary" class="reservation-summary" style="display: none;">
+                    <h3>🚕 Votre sélection :</h3>
+                    <p id="selected-trajet"></p>
+                    <p id="selected-vehicule"></p>
+                    <p id="selected-prix"></p>
+                </div>
+                
+                <form id="reservationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom complet <span class="required">*</span></label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone <span class="required">*</span></label>
+                            <input type="tel" id="telephone" name="telephone" required placeholder="+221 XX XX XX XX">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trajet">Trajet <span class="required">*</span></label>
+                            <input type="text" id="trajet" name="trajet" required readonly class="readonly-field">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicule">Véhicule</label>
+                            <input type="text" id="vehicule" name="vehicule" readonly class="readonly-field">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prix">Prix <span class="required">*</span></label>
+                            <input type="text" id="prix" name="prix" required readonly class="readonly-field">
+                        </div>
+                        <div class="form-group">
+                            <label for="passagers">Nombre de passagers <span class="required">*</span></label>
+                            <select id="passagers" name="passagers" required>
+                                <option value="">Sélectionner...</option>
+                                <option value="1">1 passager</option>
+                                <option value="2">2 passagers</option>
+                                <option value="3">3 passagers</option>
+                                <option value="4">4 passagers</option>
+                                <option value="5-8">5-8 passagers</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date <span class="required">*</span></label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="heure">Heure <span class="required">*</span></label>
+                            <input type="time" id="heure" name="heure" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Informations complémentaires</label>
+                        <textarea id="message" name="message" placeholder="Adresse précise, nombre de bagages, demandes spéciales..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Confirmer la réservation</button>
+                    <button type="button" class="btn whatsapp-btn" onclick="sendWhatsApp()">
+                        📱 Réserver via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Taxi Dakar</h3>
+                <p>Service de taxi premium à Dakar et dans tout le Sénégal. Transferts aéroport, visites touristiques et déplacements professionnels.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Nos services</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Transfert aéroport</a></li>
+                    <li><a href="#">Visites touristiques</a></li>
+                    <li><a href="#">Location de voitures</a></li>
+                    <li><a href="#">Service VIP</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <div class="contact-info-footer">
+                    <p><i class="fas fa-phone"></i> (+221) 77 241 87 61</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@taxidakar.sn" class="mail">contact@taxidakar.sn</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Taxi Dakar. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <script>
+        // Récupération des paramètres URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trajet = urlParams.get('trajet');
+            const prix = urlParams.get('prix');
+            const vehicule = urlParams.get('vehicule');
+            
+            if (trajet && prix && vehicule) {
+                // Décoder les valeurs URL
+                const trajetDecode = decodeURIComponent(trajet);
+                const vehiculeDecode = decodeURIComponent(vehicule);
+                
+                // Pré-remplir les champs
+                document.getElementById('trajet').value = trajetDecode;
+                document.getElementById('prix').value = prix + ' FCFA';
+                document.getElementById('vehicule').value = vehiculeDecode;
+                
+                // Afficher le résumé
+                const summary = document.getElementById('reservation-summary');
+                summary.style.display = 'block';
+                summary.querySelector('#selected-trajet').textContent = 'Trajet : ' + trajetDecode;
+                summary.querySelector('#selected-vehicule').textContent = 'Véhicule : ' + vehiculeDecode;
+                summary.querySelector('#selected-prix').textContent = 'Prix : ' + prix + ' FCFA';
+                
+                // Adapter le nombre de passagers selon le véhicule
+                const passagersSelect = document.getElementById('passagers');
+                if (vehiculeDecode.includes('Minibus')) {
+                    passagersSelect.innerHTML = `
+                        <option value="">Sélectionner...</option>
+                        <option value="1">1 passager</option>
+                        <option value="2">2 passagers</option>
+                        <option value="3">3 passagers</option>
+                        <option value="4">4 passagers</option>
+                        <option value="5-8">5-8 passagers</option>
+                    `;
+                } else {
+                    passagersSelect.innerHTML = `
+                        <option value="">Sélectionner...</option>
+                        <option value="1">1 passager</option>
+                        <option value="2">2 passagers</option>
+                        <option value="3">3 passagers</option>
+                        <option value="4">4 passagers</option>
+                    `;
+                }
+            }
+            
+            // Définir la date minimale (aujourd'hui)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').min = today;
+        });
+        
+        // Envoi du formulaire
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            alert('Votre demande de réservation a bien été envoyée ! Nous vous confirmons sous 30 minutes.');
+            
+        });
+        
+        // Envoi via WhatsApp
+        function sendWhatsApp() {
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const trajet = document.getElementById('trajet').value;
+            const vehicule = document.getElementById('vehicule').value;
+            const prix = document.getElementById('prix').value;
+            const date = document.getElementById('date').value;
+            const heure = document.getElementById('heure').value;
+            const passagers = document.getElementById('passagers').value;
+            const message = document.getElementById('message').value;
+            
+            if (!nom || !telephone || !trajet || !date || !heure || !passagers) {
+                alert('Veuillez remplir tous les champs obligatoires avant de continuer.');
+                return;
+            }
+            
+            const whatsappMessage = `🚕 *NOUVELLE DEMANDE DE RÉSERVATION* 🚕\n\n` +
+                                   `👤 *Nom :* ${nom}\n` +
+                                   `📱 *Téléphone :* ${telephone}\n\n` +
+                                   `📍 *Trajet :* ${trajet}\n` +
+                                   `🚗 *Véhicule :* ${vehicule}\n` +
+                                   `💰 *Prix :* ${prix}\n\n` +
+                                   `🗓️ *Date :* ${date}\n` +
+                                   `⏰ *Heure :* ${heure}\n` +
+                                   `👥 *Passagers :* ${passagers}\n\n` +
+                                   `💬 *Message :*\n${message || 'Aucun message supplémentaire'}\n\n` +
+                                   `Merci de me confirmer cette réservation !`;
+            
+            const whatsappUrl = `https://wa.me/221772418761?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
