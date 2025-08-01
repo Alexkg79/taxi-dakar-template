@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | TAXI-AIBD - Transfert Aéroport Blaise Diagne</title>
+    <title>Réservation | TAXI-AIBD - Transfert Aéroport Blaise Diagne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Styles de base identiques à votre page d'accueil */
@@ -24,10 +24,20 @@
             font-family: 'Arial', sans-serif;
         }
 
+        html {
+            font-size: 16px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--light-gray);
             color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
             overflow-x: hidden;
         }
 
@@ -83,7 +93,7 @@
             display: none;
             cursor: pointer;
             z-index: 100;
-            margin-left: auto;
+            margin-left: auto; /* Aligné à droite */
         }
 
         .hamburger div {
@@ -95,7 +105,7 @@
         }
 
         /* Hero Section */
-        .contact-hero {
+        .reservation-hero {
             background: var(--primary-color);
             background-size: cover;
             background-position: center;
@@ -104,31 +114,31 @@
             color: var(--white);
         }
 
-        .contact-hero h1 {
+        .reservation-hero h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .contact-hero p {
+        .reservation-hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
         }
 
         /* Contenu Contact */
-        .contact-container {
+        .reservation-container {
             max-width: 1200px;
             margin: 50px auto;
             padding: 0 5%;
         }
 
-        .contact-grid {
+        .reservation-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
 
-        .contact-info, .contact-form {
+        .contact-info, .reservation-form {
             background: var(--white);
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -267,6 +277,26 @@
             background: #128C7E;
         }
 
+        /* Résumé réservation */
+        .reservation-summary {
+            background: rgba(241, 196, 15, 0.2);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .reservation-summary h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .reservation-summary p {
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
         /* Footer identique */
         footer {
             background: var(--primary-color);
@@ -366,7 +396,7 @@
 
         /* Styles pour le bouton dépliant sur mobile */
         .toggle-coordonnees {
-            display: none; 
+            display: none; /* Caché par défaut */
             background: var(--secondary-color);
             color: white;
             padding: 15px;
@@ -382,13 +412,66 @@
             transition: transform 0.3s;
         }
 
+        /* paiement secu */
+        .choix-paiement {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 12px;
+        }
+
+        .btn-paiement {
+        flex: 1;
+        padding: 10px;
+        background-color: #e0e0e0;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        }
+
+        .btn-paiement:hover {
+        background-color: #d5d5d5;
+        }
+
+        .btn-paiement.actif {
+        background-color: #4CAF50;
+        color: white;
+        }
+
+        .info-paiement {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background-color: #f9f9f9;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border-left: 4px solid #4CAF50;
+        font-size: 0.9rem;
+        color: #333;
+        }
+
+        .info-paiement i {
+        color: #4CAF50;
+        font-size: 1.3rem;
+        margin-top: 4px;
+        }
+
+        .texte-paiement {
+        line-height: 1.4;
+        }
+
         /* Responsive */
+        @media (max-width: 1050px) {
+            .reservation-form #reservationForm {       
+                font-size: 14px;
+            }
+        }
+
         @media (max-width: 950px) {
-            .contact-grid {
+            .reservation-grid {
                 grid-template-columns: 1fr;
             }
-
-            /* Styles spécifiques pour le bouton dépliant */
             .toggle-coordonnees {
                 display: block;
             }
@@ -449,9 +532,6 @@
             nav ul li a {
                 font-size: 18px;
             }
-            .contact-hero h1 {
-                font-size: 2rem;
-            }
 
             /* Toggle animation */
             .hamburger.active div:nth-child(1) {
@@ -465,27 +545,40 @@
             .hamburger.active div:nth-child(3) {
                 transform: rotate(45deg) translate(-5px, -6px);
             }
+
+            .reservation-hero h1 {
+                font-size: 2rem;
+            }
         }
-                
         @media (max-width: 365px) {
              nav ul li a {
                 font-size: 12px;
             }
         }
 
-
         @media (max-width: 480px) {
-            .contact-hero h1 {
+            .reservation-hero h1 {
                 font-size: 1.8rem;
             }
             
-            .contact-form {
+            .reservation-form {
                 padding: 25px;
             }
 
             .contact-info.visible {
                 max-height: 1000px;
                 padding: 25px;
+            }
+        }
+
+        @media (max-width: 433px) {
+            .reservation-form #reservationForm {       
+                font-size: 12px;
+            }
+            /* Formulaire */
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
         }
     </style>
@@ -513,15 +606,15 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="contact-hero">
-        <h1>Contactez TAXI-AIBD</h1>
-        <p>Notre équipe est disponible 24h/24 pour répondre à vos demandes</p>
+    <section class="reservation-hero">
+        <h1>Réservation TAXI-AIBD</h1>
+        <p>Notre équipe est disponible 24h/24 pour répondre à vos demandes de réservations</p>
     </section>
 
     <!-- Contenu Contact -->
-    <div class="contact-container">
-        <div class="contact-grid">
-            <!-- Colonne Informations -->
+    <div class="reservation-container">
+        <div class="reservation-grid">
+            <!-- Colonne Informations avec bouton dépliant -->
             <div>
                 <div class="toggle-coordonnees" onclick="toggleCoordonnees()">
                     Afficher nos coordonnées <i class="fas fa-chevron-down"></i>
@@ -559,12 +652,20 @@
                 </div>
             </div>
             
-            <!-- Colonne Formulaire -->
-            <div class="contact-form">
-                <h2 class="section-title">Formulaire de contact</h2>
-                <p>Remplissez ce formulaire pour toute demande d'information</p>
+            <!-- Colonne Formulaire (toujours visible) -->
+            <div class="reservation-form">
+                <h2 class="section-title">Formulaire de réservation</h2>
+                <p>Remplissez ce formulaire pour toute demande de réservation ou d'information</p>
                 
-                <form id="contactForm">
+                <!-- Résumé de réservation (visible si venant de la page tarifs) -->
+                <div id="reservation-summary" class="reservation-summary" style="display: none;">
+                    <h3>Votre sélection :</h3>
+                    <p id="selected-trajet"></p>
+                    <p id="selected-vehicule"></p>
+                    <p id="selected-prix"></p>
+                </div>
+                
+                <form id="reservationForm">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nom">Nom complet <span class="required">*</span></label>
@@ -572,34 +673,66 @@
                         </div>
                         <div class="form-group">
                             <label for="telephone">Téléphone <span class="required">*</span></label>
-                            <input type="tel" id="telephone" name="telephone" required>
+                            <input type="tel" id="telephone" name="telephone" required placeholder="+221 XX XX XX XX">
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" placeholder="votre@email.com">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trajet">Trajet <span class="required">*</span></label>
+                            <input type="text" id="trajet" name="trajet" required readonly class="readonly-field">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicule">Véhicule</label>
+                            <input type="text" id="vehicule" name="vehicule" readonly class="readonly-field">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prix">Prix <span class="required">*</span></label>
+                            <input type="text" id="prix" name="prix" required readonly class="readonly-field">
+                        </div>
+                        <div class="form-group">
+                            <label for="passagers">Nombre de passagers <span class="required">*</span></label>
+                            <select id="passagers" name="passagers" required>
+                                <option value="">Sélectionner...</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date <span class="required">*</span></label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="heure">Heure <span class="required">*</span></label>
+                            <input type="time" id="heure" name="heure" required>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="sujet">Sujet <span class="required">*</span></label>
-                        <select id="sujet" name="sujet" required>
-                            <option value="">Sélectionnez un sujet...</option>
-                            <option value="reservation">Réservation de transfert</option>
-                            <option value="information">Demande d'information</option>
-                            <option value="groupe">Service pour groupe</option>
-                            <option value="autre">Autre demande</option>
-                        </select>
+                        <label for="message">Informations complémentaires</label>
+                        <textarea id="message" name="message" placeholder="Adresse précise, nombre de bagages, demandes spéciales..."></textarea>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" required></textarea>
+
+                    <div class="info-paiement">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <div class="texte-paiement">
+                        <strong>Paiement sécurisé sur place</strong><br>
+                        Espèces, Mobile Money (Orange Money, Wave)
                     </div>
-                    
-                    <button type="submit" class="btn">Envoyer le message</button>
-                    <button type="button" class="btn whatsapp-btn" onclick="window.open('https://wa.me/221766395078', '_blank')">
-                        <i class="fab fa-whatsapp"></i> Contacter par WhatsApp
+                    </div>
+
+                    <button type="submit" class="btn">Confirmer la réservation</button>
+                    <button type="button" class="btn whatsapp-btn" onclick="sendWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> Réserver via WhatsApp
                     </button>
                 </form>
             </div>
@@ -669,18 +802,80 @@
             content.classList.toggle('visible');
             button.classList.toggle('active');
         }
-        
-        // Gestion de l'envoi du formulaire
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Ici vous ajouteriez le code pour envoyer le formulaire
-            alert('Votre message a bien été envoyé ! Nous vous répondrons dans les plus brefs délais.');
-            this.reset();
-        });
 
-        // Gestion du menu hamburger
+        // Fonction pour ajuster les options de passagers selon le véhicule
+        function updatePassengerOptions(vehicleType) {
+            const passagersSelect = document.getElementById('passagers');
+            
+            // Vider les options existantes
+            passagersSelect.innerHTML = '<option value="">Sélectionner...</option>';
+            
+            // Déterminer le type de véhicule
+            const isMinibus = vehicleType.toLowerCase().includes('minibus') || vehicleType.toLowerCase().includes('8 places');
+            
+            if (isMinibus) {
+                // Pour minibus : 1 à 8 passagers
+                for (let i = 1; i <= 4; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i + (i === 1 ? ' passager' : ' passagers');
+                    passagersSelect.appendChild(option);
+                }
+                // Ajouter l'option 5-8 passagers pour minibus
+                const option58 = document.createElement('option');
+                option58.value = '5-8';
+                option58.textContent = '5-8 passagers';
+                passagersSelect.appendChild(option58);
+            } else {
+                // Pour berlines : 1 à 4 passagers seulement
+                for (let i = 1; i <= 4; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i + (i === 1 ? ' passager' : ' passagers');
+                    passagersSelect.appendChild(option);
+                }
+            }
+        }
+
+        // Gestion des paramètres URL pour afficher le résumé de réservation
         document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trajet = urlParams.get('trajet');
+            const vehicule = urlParams.get('vehicule');
+            const prix = urlParams.get('prix');
+            
+            if (trajet && vehicule && prix) {
+                // Afficher le résumé de réservation
+                const summary = document.getElementById('reservation-summary');
+                summary.style.display = 'block';
+                
+                document.getElementById('selected-trajet').textContent = 'Trajet : ' + decodeURIComponent(trajet);
+                document.getElementById('selected-vehicule').textContent = 'Véhicule : ' + decodeURIComponent(vehicule);
+                document.getElementById('selected-prix').textContent = 'Prix : ' + prix + ' FCFA';
+                
+                // Pré-remplir les champs du formulaire
+                const vehiculeDecoded = decodeURIComponent(vehicule);
+                document.getElementById('trajet').value = decodeURIComponent(trajet);
+                document.getElementById('vehicule').value = vehiculeDecoded;
+                document.getElementById('prix').value = prix + ' FCFA';
+                
+                // Ajuster les options de passagers selon le véhicule sélectionné
+                updatePassengerOptions(vehiculeDecoded);
+            } else {
+                // Si pas de véhicule pré-sélectionné, utiliser les options par défaut (berline)
+                updatePassengerOptions('berline');
+            }
+            
+            // Définir la date minimum à aujourd'hui
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').setAttribute('min', today);
+            
+            // Sur mobile, masquer les coordonnées par défaut
+            if (window.innerWidth <= 480) {
+                document.getElementById('coordonnees-content').classList.remove('visible');
+            }
+
+            // Gestion du menu hamburger
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('nav ul');
 
@@ -697,6 +892,62 @@
                 });
             });
         });
+        
+        // Gestion de l'envoi du formulaire
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupérer les données du formulaire
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Ici vous pourriez envoyer les données à votre serveur
+            alert('Votre réservation a bien été enregistrée ! Nous vous contacterons dans les plus brefs délais.');
+            
+            // Optionnel: réinitialiser le formulaire
+            // this.reset();
+        });
+
+        // Fonction pour envoyer via WhatsApp
+        function sendWhatsApp() {
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const trajet = document.getElementById('trajet').value;
+            const vehicule = document.getElementById('vehicule').value;
+            const prix = document.getElementById('prix').value;
+            const passagers = document.getElementById('passagers').value;
+            const date = document.getElementById('date').value;
+            const heure = document.getElementById('heure').value;
+            const message = document.getElementById('message').value;
+            
+            // Vérifier les champs obligatoires
+            if (!nom || !telephone || !trajet || !prix || !passagers || !date || !heure) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
+            // Construire le message WhatsApp
+            let whatsappMessage = `🚖 *RÉSERVATION TAXI-AIBD*\n\n`;
+            whatsappMessage += `👤 *Nom :* ${nom}\n`;
+            whatsappMessage += `📞 *Téléphone :* ${telephone}\n`;
+            whatsappMessage += `🛣️ *Trajet :* ${trajet}\n`;
+            whatsappMessage += `🚗 *Véhicule :* ${vehicule}\n`;
+            whatsappMessage += `💰 *Prix :* ${prix}\n`;
+            whatsappMessage += `👥 *Passagers :* ${passagers}\n`;
+            whatsappMessage += `📅 *Date :* ${date}\n`;
+            whatsappMessage += `🕐 *Heure :* ${heure}\n`;
+            
+            if (message) {
+                whatsappMessage += `💬 *Message :* ${message}\n`;
+            }
+            
+            // Encoder le message pour l'URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Ouvrir WhatsApp
+            const whatsappUrl = `https://wa.me/221766395078?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
 </body>
 </html>

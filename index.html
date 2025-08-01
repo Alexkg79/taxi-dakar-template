@@ -3,861 +3,835 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Dakar - Transferts Aéroport AIBD</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+    <title>TAXI-AIBD | Transfert Aéroport Blaise Diagne</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    /* ===================== */
+    /* VARIABLES & BASE STYLE */
+    /* ===================== */
+    :root {
+        --primary-color: #003366;
+        --secondary-color: #E67E22;
+        --accent-color: #F1C40F;
+        --text-color: #333333;
+        --light-gray: #F5F5F5;
+        --white: #FFFFFF;
+        --border-color: #DDDDDD;
+        --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+        --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background-color: var(--light-gray);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ======== */
+    /* HEADER */
+    /* ======== */
+    header {
+        background: var(--white);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        z-index: 90;
+    }
+
+    /* Navigation */
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 25px;
+    }
+
+    nav ul li a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+        color: var(--secondary-color);
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        z-index: 100;
+        margin-left: auto;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-color);
+        margin: 5px;
+        transition: var(--transition);
+    }
+
+    /* ======== */
+    /* HERO */
+    /* ======== */
+    .hero {
+        --hero-min-height: 600px;
+        --overlay-opacity: 0.9;
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: var(--hero-min-height);
+        padding: 80px 5%;
+        color: var(--white);
+        overflow: hidden;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+    }
+
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://plus.unsplash.com/premium_photo-1661537848586-7e99f068e24b');
+        background-size: cover;
+        background-position: center 25%;
+        background-repeat: no-repeat;
+        z-index: 1;
+    }
+
+    .hero-background::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg, 
+            rgba(0, 51, 102, var(--overlay-opacity)) 0%, 
+            rgba(0, 51, 102, calc(var(--overlay-opacity) * 0.6)) 100%
+        );
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 20px;
+        line-height: 1.2;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-title span {
+        color: var(--accent-color);
+        font-weight: 700;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        max-width: 600px;
+        margin-bottom: 30px;
+        line-height: 1.5;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        opacity: 0.95;
+
+    }
+
+    /* Hero Features */
+    .hero-features {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+
+    .feature-item {
+        background: rgba(255,255,255,0.1);
+        padding: 10px 15px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+    }
+
+    .feature-item i {
+        color: var(--accent-color);
+    }
+
+    /* Hero CTA */
+    .hero-cta {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        background: var(--secondary-color);
+        color: var(--white);
+        padding: 15px 30px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        display: inline-block;
+    }
+
+    .btn-primary:hover {
+        background: #D35400;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--white);
+        padding: 15px 25px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: var(--accent-color);
+    }
+
+    /* ================== */
+    /* RESERVATION SYSTEM */
+    /* ================== */
+    .reservation {
+        padding: 50px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .container {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+    }
+
+    .reservation-header {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 25px;
+        text-align: center;
+    }
+
+    .reservation-header h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        color: var(--accent-color);
+    }
+
+    /* Tabs */
+    .tabs {
+        display: flex;
+        background: var(--primary-color);
+    }
+
+    .tab-btn {
+        flex: 1;
+        padding: 15px;
+        background: transparent;
+        color: var(--white);
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .tab-btn.active {
+        background: var(--accent-color);
+        color: var(--text-color);
+    }
+
+    .tab-btn:hover:not(.active) {
+        background: rgba(255,255,255,0.1);
+    }
+
+    .tab-content {
+        display: none;
+        padding: 30px;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    /* Routes */
+    .route {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--border-color);
+        gap: 15px;
+    }
+
+    .route:last-child {
+        border-bottom: none;
+    }
+
+    .route:hover {
+        background-color: var(--light-gray);
+    }
+
+    .route-info h3 {
+        color: var(--primary-color);
+        margin-bottom: 5px;
+    }
+
+    .route-info p {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .price {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+        text-align: center;
+    }
+
+    .btn-reserve {
+        background: var(--secondary-color);
+        color: var(--white);
+        border: none;
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: var(--transition);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .btn-reserve:hover {
+        background: #D35400;
+        transform: scale(1.02);
+    }
+
+    /* Vehicles */
+    .vehicles {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+
+    .vehicle {
+        border: 1px solid var(--border-color);
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        text-align: center;
+        min-width: 120px;
+    }
+
+    .vehicle.selected {
+        background: var(--primary-color);
+        color: var(--white);
+        border-color: var(--primary-color);
+    }
+
+    .vehicle-price {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .note {
+        margin-top: 30px;
+        padding: 15px;
+        background: var(--light-gray);
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    /* Section Services */
+    .styled-services {
+        background: var(--light-gray);
+        color: var(--text-color);
+        padding: 60px 5%;
+        position: relative;
+        overflow: hidden;
+                padding: 50px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .styled-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        position: relative;
+        color: var(--primary-color);
+    }
+    
+    .styled-title span {
+        color: var(--secondary-color);
+    }
+    
+    .styled-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 15px auto 0;
+    }
+    
+    .styled-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        max-width: 1054px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    .styled-card {
+        background: var(--white);
+        padding: 20px 15px;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-top: 4px solid transparent;
+    }
+    
+    .styled-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        border-top-color: var(--accent-color);
+    }
+    
+    .card-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary-color), #002244);
+        color: var(--white);
+        border-radius: 50%;
+        font-size: 1.5rem;
+    }
+    
+    .styled-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+    
+    .styled-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .styled-card strong {
+        color: var(--secondary-color);
+    }
+
+    /* ======== */
+    /* FOOTER */
+    /* ======== */
+    footer {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 50px 5% 30px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-column h3 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+        color: var(--white);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--accent-color);
+    }
+
+    .contact-info p {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        color: var(--white);
+        font-size: 1.2rem;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+    }
+
+    /* ================== */
+    /* WHATSAPP BUTTON */
+    /* ================== */
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25D366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1);
+    }
+
+    /* ================== */
+    /* RESPONSIVE STYLES */
+    /* ================== */
+    @media (max-width: 992px) {
+        .hero {
+            --hero-min-height: 450px;
+            /* --overlay-opacity: 0.7; */
+            flex-direction: column;
+            text-align: center;
+        }
+        .hero-subtitle {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: auto;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
+        
+        .hero-content {
+            max-width: 100%;
+            margin-bottom: 30px;
         }
-
-        /* Header */
-        header {
-            background: #000;
-            color: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        
+        .hero-background {
+            background-position: 70% center;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #FFD700;
+        
+        .hero-features, .hero-cta {
+            justify-content: center;
         }
+        
+        .styled-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 
-        .logo span {
-            color: white;
+    @media (max-width: 768px) {
+        /* Hamburger menu */
+        .hamburger {
+            display: block;
         }
 
         nav ul {
-            display: flex;
-            list-style: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 60%;
+            background: var(--white);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: right 0.5s ease-in-out;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+            z-index: 90;
+        }
+
+        nav ul.active {
+            right: 0;
         }
 
         nav ul li {
-            margin-left: 30px;
+            margin: 15px 0;
         }
 
         nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-size: 18px;
         }
 
-        nav ul li a:hover {
-            color: #FFD700;
+        /* Toggle animation */
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
         }
 
-        .contact-number {
-            display: flex;
-            align-items: center;
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
         }
 
-        .contact-number a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 5px;
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
 
-        /* Bouton WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25D366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-
-        }
-
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            color: #FFF;
-            transform: scale(1.1);
-        }
-
-        .whatsapp-float i {
-            margin-top: 3px;
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 700px;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), 
-                        url('https://images.unsplash.com/photo-1490650404312-a2175773bbf5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            margin-top: 70px;
+            --hero-min-height: 400px;
+            padding: 60px 5%;
         }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            z-index: 2;
-        }
-
+        
         .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 2rem;
         }
-
-        .hero-title span {
-            color: #FFD700;
-        }
-
+        
         .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            font-weight: 300;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background: #FFD700;
-            color: #333;
-        }
-
-        .btn-primary:hover {
-            background: #333;
-            color: #FFD700;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .hero-features {
-            display: flex;
-            gap: 30px;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .feature-icon {
-            font-size: 1.8rem;
-            color: #FFD700;
-        }
-
-        .feature-text {
             font-size: 1rem;
-        }
-
-        .feature-text strong {
-            display: block;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 5%;
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #FFD700;
-            margin: 15px auto;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #222;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 5%;
-            background: #f9f9f9;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .service-card:hover .service-image img {
-            transform: scale(1.1);
-        }
-
-        .service-content {
-            padding: 25px;
-        }
-
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #222;
-        }
-
-        .service-content p {
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        /* Reservation Section */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .reservation {
-            padding: 80px 5%;
-            background: white;
-        }
-
-        
-        .reservation .container .reservation-header{
-            background: linear-gradient(135deg, #000000, #333);
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .reservation .container .reservation-header h1 {
-            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
-        .reservation .container .reservation-header .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            color: #FFD700;
-
-        }
-
-
-        .tabs {
-            display: flex;
-            background: #333;
-            border-radius: 8px 8px 0 0;
-            overflow: hidden;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 15px;
-            background: #333;
-            color: white;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .tab-btn.active {
-            background: #FFD700;
-            color: #000;
-            font-weight: bold;
-        }
-
-        .tab-btn:hover:not(.active) {
-            background: #555;
-        }
-
-        .tab-content {
-            display: none;
-            background: white;
-            padding: 25px;
-            border-radius: 0 0 8px 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        /* Reservation */
         .route {
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s;
-        }
-
-        .route:hover {
-            background: #f9f9f9;
-            transform: translateX(5px);
-        }
-
-        .route-info h3 {
-            color: #000;
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-
-        .route-info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #2c5530;
+            grid-template-columns: 1fr;
             text-align: center;
-            margin: 0 20px;
-        }
-        .btn-reserve {
-            background: #FFD700;
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        .btn-reserve:hover {
-            background: #000;
-            color: #FFD700;
-            transform: scale(1.05);
-        }
-
-        .vehicles {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-
-        .vehicle {
-            border: 1px solid #ddd;
-            padding: 10px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .vehicle.selected {
-            background: #FFD700;
-            border-color: #FFD700;
-            font-weight: bold;
-        }
-
-        .vehicle-price {
-            font-size: 0.9rem;
-            color: #2c5530;
-            margin-top: 5px;
-            font-weight: bold;
-        }
-
-        .vehicle img {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 5px;
-        }
-
-        .note {
-            margin-top: 30px;
-            padding: 15px;
-            background: #f0f0f0;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        /* Footer */
-        footer {
-            background: #000;
-            color: white;
-            padding: 50px 5% 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-column h3 {
-            color: #FFD700;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-column ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-column ul li a:hover {
-            color: #FFD700;
-        }
-
-        .contact-info {
-            margin-top: 15px;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
             gap: 10px;
         }
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .price {
+            margin: 10px 0;
         }
 
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
+        .vehicles {
+            justify-content: center;
+        }
+        .styled-grid {
+            grid-template-columns: 1fr 1fr;
         }
 
-        .social-links a:hover {
-            color: #FFD700;
-        }
+    }
 
-        .copyright {
+    @media (max-width: 500px) {
+        .styled-grid h4{
+            font-size: 1rem;
+        }
+        .styled-card {
+            padding: 15px 5px;
+        }
+        .styled-title{
+            padding: 15px 15px;
+        }
+    }
+    @media (max-width: 480px) {
+        .hero {
+            --hero-min-height: 350px;
+        }
+        
+        .hero-title {
+            font-size: 1.8rem;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .btn-primary, .btn-secondary {
+            width: 100%;
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #999;
-            font-size: 0.9rem;
-        }
-        .mail {
-            text-decoration: none;
-            color: white;
-
+            justify-content: center;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px;
-                position: relative;
-            }
-
-            nav ul {
-                margin-top: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav ul li {
-                margin: 5px 15px;
-            }
-
-            .contact-number {
-                margin-top: 15px;
-            }
-
-            .hero {
-                text-align: center;
-                margin-top: 0;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-                margin: 0 auto 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .hero-features {
-                justify-content: center;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .route {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                text-align: center;
-            }
-
-            .price {
-                margin: 10px 0;
-            }
-
-            .vehicles {
-                justify-content: center;
-            }
+        .tab-btn {
+            padding: 10px 5px;
+            font-size: 12px;
         }
 
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
+        nav ul li a {
+            font-size: 16px;
+        }
+        .styled-grid {
+            grid-template-columns: 1fr;
+        }
+    }
 
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
+    @media (max-width: 399px) {
+        nav ul li a {
+            font-size: 14px;
         }
-        @media (max-width: 680px) {
-
-            #reservation h1{
-                font-size: 35px;
-            }
-
+        
+        .tabs .tab-btn {
+            font-size: 11px;
         }
-        @media (max-width: 620px) {
-            header li{
-                font-size: 14px;
-            }
-            #reservation h1{
-                font-size: 25px;
-            }
-            #reservation .subtitle{
-                font-size: 14px;
-            }
+        
+        .reservation .tab-content .vehicles .vehicle {
+            font-size: 12px;
+            min-width: 100px;
+            padding: 8px 5px;
         }
-        @media (max-width: 500px) {
-            header li{
-                font-size: 12px;
-            }
-            #reservation .subtitle{
-                font-size: 12px;
-            }
-        }
-        @media (max-width: 447px) {
-            header li{
-                font-size: 10px;
-            }
-            #reservation h1{
-                font-size: 20px;
-            }
-        }
-
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animated {
-            animation: fadeInUp 1s ease-out forwards;
-        }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">Taxi | <span>Dakar</span></div>
+        <div class="logo">TAXI-AIBD</div>
+        
+        <!-- Hamburger Menu -->
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
         <nav>
             <ul>
-                <li><a href="#hero">ACCUEIL</a></li>
-                <li><a href="#reservation">RESERVER UN TAXI</a></li>
-                <li><a href="#location">LOCATION DE VOITURES</a></li>
+                <li><a href="./index.html">ACCUEIL</a></li>
+                <li><a href="./about.html">A PROPOS</a></li>
+                <li><a href="#">NOS TARIFS</a></li>
+                <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>
-        <div class="contact-number">
-            <a href="https://wa.me/221772418761" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
     </header>
 
+
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title animated">Service de <span>Taxi Premium</span> à Dakar</h1>
-            <p class="hero-subtitle animated delay-1">Déplacez-vous avec élégance et sécurité dans tout le Sénégal. Réservation instantanée, chauffeurs professionnels et véhicules haut de gamme.</p>
-            
-            <div class="cta-buttons">
-                <a href="#reservation" class="btn btn-primary animated delay-2">Réserver maintenant</a>
-                <a href="https://wa.me/221772418761" class="btn btn-secondary animated delay-2">Appeler un chauffeur</a>
+<section class="hero" style="position: relative;">
+    <div class="hero-background" style="background-image: url('https://plus.unsplash.com/premium_photo-1661537848586-7e99f068e24b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+    
+    <div class="hero-content" style="position: relative; z-index: 2;">
+        <h1 class="hero-title">Transfert Premium vers l'Aéroport <span>Blaise Diagne</span></h1>
+        <p class="hero-subtitle">Service de taxi confortable, ponctuel et sécurisé pour vos trajets à Dakar et sa région</p>
+        
+        <div class="hero-features">
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>24h/24 - 7j/7</span>
             </div>
-
-            <div class="hero-features">
-                <div class="feature-item animated delay-3">
-                    <div class="feature-icon">🚕</div>
-                    <div class="feature-text">
-                        <strong>Service 24h/24</strong>
-                        Disponible jour et nuit
-                    </div>
-                </div>
-
-                <div class="feature-item animated delay-3">
-                    <div class="feature-icon">⏱️</div>
-                    <div class="feature-text">
-                        <strong>Ponctualité garantie</strong>
-                        Prise en charge à l'heure
-                    </div>
-                </div>
-
-                <div class="feature-item animated delay-3">
-                    <div class="feature-icon">💰</div>
-                    <div class="feature-text">
-                        <strong>Tarifs transparents</strong>
-                        Pas de surprise
-                    </div>
-                </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Véhicules haut de gamme</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Paiement sécurisé</span>
             </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2 class="section-title">À Propos de Nous</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>Votre partenaire de confiance pour vos déplacements à Dakar</h3>
-                <p>Taxi Dakar est une entreprise spécialisée dans le transport de personnes avec un service haut de gamme et personnalisé. Forts de plusieurs années d'expérience, nous mettons à votre disposition une flotte de véhicules modernes et confortables, conduits par des chauffeurs professionnels.</p>
-                <p>Notre mission est de vous offrir un service de qualité, sûr et ponctuel, que ce soit pour vos transferts aéroport, vos déplacements professionnels ou vos visites touristiques dans la région de Dakar.</p>
-                <p>Nous nous engageons à vous fournir un service personnalisé adapté à vos besoins, avec des tarifs transparents et sans surprise.</p>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1600320254374-ce2d293c324e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Taxi Dakar">
-            </div>
+        
+        <div class="hero-cta">
+            <a href="#reservation" class="btn-primary">Réserver maintenant</a>
+            <a href="tel:+221772418761" class="btn-secondary">
+                <i class="fas fa-phone"></i> (+221) 77 241 87 61
+            </a>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <h2 class="section-title">Nos Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1629308993023-bb7ca078abdc?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Service assistance aéroport">
-                </div>
-                <div class="service-content">
-                    <h3>Service assistance aéroport</h3>
-                    <p>Notre réseau de partenaires vous assiste dans l'aéroport pour vos formalités et bagages. Nous vous accueillons à votre arrivée et vous accompagnons jusqu'à votre véhicule.</p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tourisme à Dakar">
-                </div>
-                <div class="service-content">
-                    <h3>Tourisme à Dakar</h3>
-                    <p>En partenariat avec tourisme-dakar, Taxi dakar vous propose une visite guidée de la capitale Sénégalaise. Découvrez les richesses culturelles et historiques de Dakar avec nos chauffeurs-guides.</p>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Aéroport International Blaise Diagne">
-                </div>
-                <div class="service-content">
-                    <h3>Aéroport International Blaise Diagne (AIBD)</h3>
-                    <p>L'aéroport international Blaise-Diagne (AIBD) se situe à Diass à 47 kilomètres au sud-est de Dakar. Nous assurons des transferts fiables et ponctuels vers et depuis l'aéroport 24h/24.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- Reservation Section -->
     <section class="reservation" id="reservation">
         <div class="container">
             <div class="reservation-header">
-                <h1>🚖 Taxi Dakar - Réservation</h1>
-                <p class="subtitle">Appelez directement le (+221) 77 241 87 61 <br> ou réservez un taxi ci-dessous</p>
+                <h1>TAXI AIBD - Réservation</h1>
+                <p class="subtitle">Réservez votre transfert vers ou depuis l'aéroport</p>
             </div>
-
             
             <div class="tabs">
                 <button class="tab-btn active" onclick="openTab('depart-aibd')">Départ AIBD</button>
@@ -872,21 +846,50 @@
                         <h3>AIBD → Dakar</h3>
                         <p>Transfert vers le centre-ville de Dakar</p>
                         <div class="vehicles">
-                            <div class="vehicle selected" data-price="25000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">25 000 FCFA</div>
-                            </div>
-                            <div class="vehicle" data-price="35000">
-                                <div>Minibus (8 places)</div>
+                            <!-- Berline standard -->
+                            <div class="vehicle selected" data-price="35000">
+                                <div>Berline standard</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 3-4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 2-3
+                                    </span>
+                                </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
                             </div>
+                            
+                            <!-- Berline VIP -->
                             <div class="vehicle" data-price="45000">
-                                <div>SUV Premium</div>
+                                <div>Berline VIP</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 3
+                                    </span>
+                                </div>
                                 <div class="vehicle-price">45 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Minibus -->
+                            <div class="vehicle" data-price="55000">
+                                <div>Minibus</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 8
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 6-8
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">55 000 FCFA</div>
                             </div>
                         </div>
                     </div>
-                    <div class="price">25 000 FCFA</div>
+                    <div class="price">35 000 FCFA</div>
                     <button class="btn-reserve">Réserver</button>
                 </div>
                 
@@ -895,36 +898,50 @@
                         <h3>AIBD → Saly</h3>
                         <p>Transfert vers la station balnéaire de Saly</p>
                         <div class="vehicles">
-                            <div class="vehicle selected" data-price="22000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">22 000 FCFA</div>
+                            <!-- Berline standard -->
+                            <div class="vehicle selected" data-price="35000">
+                                <div>Berline standard</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 3-4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 2-3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">35 000 FCFA</div>
                             </div>
-                            <div class="vehicle" data-price="32000">
-                                <div>Minibus (8 places)</div>
-                                <div class="vehicle-price">32 000 FCFA</div>
+                            
+                            <!-- Berline VIP -->
+                            <div class="vehicle" data-price="45000">
+                                <div>Berline VIP</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">45 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Minibus -->
+                            <div class="vehicle" data-price="55000">
+                                <div>Minibus</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 8
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 6-8
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">55 000 FCFA</div>
                             </div>
                         </div>
                     </div>
-                    <div class="price">22 000 FCFA</div>
-                    <button class="btn-reserve">Réserver</button>
-                </div>
-                
-                <div class="route">
-                    <div class="route-info">
-                        <h3>AIBD → Saint-Louis</h3>
-                        <p>Transfert vers la ville historique</p>
-                        <div class="vehicles">
-                            <div class="vehicle selected" data-price="60000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">60 000 FCFA</div>
-                            </div>
-                            <div class="vehicle" data-price="80000">
-                                <div>Minibus (8 places)</div>
-                                <div class="vehicle-price">80 000 FCFA</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="price">60 000 FCFA</div>
+                    <div class="price">25 000 FCFA</div>
                     <button class="btn-reserve">Réserver</button>
                 </div>
                 
@@ -940,17 +957,50 @@
                         <h3>Dakar → AIBD</h3>
                         <p>Transfert depuis le centre-ville de Dakar</p>
                         <div class="vehicles">
-                            <div class="vehicle selected" data-price="25000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">25 000 FCFA</div>
-                            </div>
-                            <div class="vehicle" data-price="35000">
-                                <div>Minibus (8 places)</div>
+                            <!-- Berline standard -->
+                            <div class="vehicle selected" data-price="35000">
+                                <div>Berline standard</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 3-4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 2-3
+                                    </span>
+                                </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Berline VIP -->
+                            <div class="vehicle" data-price="45000">
+                                <div>Berline VIP</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">45 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Minibus -->
+                            <div class="vehicle" data-price="55000">
+                                <div>Minibus</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 8
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 6-8
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">55 000 FCFA</div>
                             </div>
                         </div>
                     </div>
-                    <div class="price">25 000 FCFA</div>
+                    <div class="price">35 000 FCFA</div>
                     <button class="btn-reserve">Réserver</button>
                 </div>
                 
@@ -959,13 +1009,50 @@
                         <h3>Saly → AIBD</h3>
                         <p>Transfert depuis la station balnéaire</p>
                         <div class="vehicles">
-                            <div class="vehicle selected" data-price="22000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">22 000 FCFA</div>
+                            <!-- Berline standard -->
+                            <div class="vehicle selected" data-price="35000">
+                                <div>Berline standard</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 3-4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 2-3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">35 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Berline VIP -->
+                            <div class="vehicle" data-price="45000">
+                                <div>Berline VIP</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">45 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Minibus -->
+                            <div class="vehicle" data-price="55000">
+                                <div>Minibus</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 8
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 6-8
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">55 000 FCFA</div>
                             </div>
                         </div>
                     </div>
-                    <div class="price">22 000 FCFA</div>
+                    <div class="price">25 000 FCFA</div>
                     <button class="btn-reserve">Réserver</button>
                 </div>
                 
@@ -981,13 +1068,46 @@
                         <h3>Dakar - Touba</h3>
                         <p>Trajet vers la ville sainte</p>
                         <div class="vehicles">
-                            <div class="vehicle selected" data-price="50000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">50 000 FCFA</div>
+                            <!-- Berline standard -->
+                            <div class="vehicle selected" data-price="35000">
+                                <div>Berline standard</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 3-4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 2-3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">35 000 FCFA</div>
                             </div>
-                            <div class="vehicle" data-price="70000">
-                                <div>Minibus (8 places)</div>
-                                <div class="vehicle-price">70 000 FCFA</div>
+                            
+                            <!-- Berline VIP -->
+                            <div class="vehicle" data-price="45000">
+                                <div>Berline VIP</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">45 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Minibus -->
+                            <div class="vehicle" data-price="55000">
+                                <div>Minibus</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 8
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 6-8
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">55 000 FCFA</div>
                             </div>
                         </div>
                     </div>
@@ -1000,9 +1120,46 @@
                         <h3>Dakar - Mbour</h3>
                         <p>Trajet vers la ville côtière</p>
                         <div class="vehicles">
-                            <div class="vehicle selected" data-price="30000">
-                                <div>Berline</div>
-                                <div class="vehicle-price">30 000 FCFA</div>
+                            <!-- Berline standard -->
+                            <div class="vehicle selected" data-price="35000">
+                                <div>Berline standard</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 3-4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 2-3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">35 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Berline VIP -->
+                            <div class="vehicle" data-price="45000">
+                                <div>Berline VIP</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 4
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 3
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">45 000 FCFA</div>
+                            </div>
+                            
+                            <!-- Minibus -->
+                            <div class="vehicle" data-price="55000">
+                                <div>Minibus</div>
+                                <div class="vehicle-details">
+                                    <span title="Passagers">
+                                        <i class="fas fa-users"></i> 8
+                                    </span>
+                                    <span title="Bagages">
+                                        <i class="fas fa-suitcase"></i> 6-8
+                                    </span>
+                                </div>
+                                <div class="vehicle-price">55 000 FCFA</div>
                             </div>
                         </div>
                     </div>
@@ -1017,14 +1174,55 @@
         </div>
     </section>
 
+    <!-- Section Services Compacte -->
+    <section class="styled-services">
+        <div class="container">
+            <h3 class="styled-title">Nos <span>Services Exclusifs</span></h3>
+            
+            <div class="styled-grid">
+                <div class="styled-card">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Disponibilité 24/7</h4>
+                    <p>Service continu jour et nuit <strong>+5000 FCFA (21h-6h)</strong></p>
+                </div>
+                
+                <div class="styled-card">
+                    <div class="card-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h4>Flotte Variée</h4>
+                    <p>Berlines confortables, SUV spacieux et minibus pour groupes</p>
+                </div>
+                
+                <div class="styled-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Chauffeurs Experts</h4>
+                    <p>Professionnels formés et ponctuels</p>
+                </div>
+                
+                <div class="styled-card">
+                    <div class="card-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h4>Tarification Claire</h4>
+                    <p>Prix fixes sans surprise, payement sécurisé</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Taxi Dakar</h3>
-                <p>Service de taxi premium à Dakar et dans tout le Sénégal. Transferts aéroport, visites touristiques et déplacements professionnels.</p>
+                <h3>TAXI-AIBD</h3>
+                <p>Service de taxi premium entre l'aéroport Blaise Diagne et Dakar, Saly et toute la région.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -1034,10 +1232,10 @@
             <div class="footer-column">
                 <h3>Liens rapides</h3>
                 <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#services">Nos services</a></li>
-                    <li><a href="#reservation">Réservation</a></li>
+                    <li><a href="./index.html">Accueil</a></li>
+                    <li><a href="./about.html">À Propos</a></li>
+                    <li><a href="#">Nos tarifs</a></li>
+                    <li><a href="./contact.html">Contactez-nous</a></li>
                 </ul>
             </div>
 
@@ -1045,9 +1243,9 @@
                 <h3>Services</h3>
                 <ul>
                     <li><a href="#">Transfert aéroport</a></li>
-                    <li><a href="#">Visites touristiques</a></li>
-                    <li><a href="#">Location de voitures</a></li>
-                    <li><a href="#">Service VIP</a></li>
+                    <li><a href="#">Transfert Dakar</a></li>
+                    <li><a href="#">Transfert Saly</a></li>
+                    <li><a href="#">Transfert longue distance</a></li>
                 </ul>
             </div>
 
@@ -1055,95 +1253,98 @@
                 <h3>Contact</h3>
                 <div class="contact-info">
                     <p><i class="fas fa-phone"></i> (+221) 77 241 87 61</p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:contact@taxidakar.sn" class="mail">contact@taxidakar.sn</a></p>
-                    <p><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</p>
+                    <p><i class="fas fa-envelope"></i> contact@taxi-aibd.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Aéroport Blaise Diagne, Dakar</p>
                 </div>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2023 Taxi Dakar. Tous droits réservés.</p>
+            <p>&copy; 2023 TAXI-AIBD. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <script>
-        function openTab(tabId) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
+    <!-- Bouton WhatsApp -->
+    <a href="https://wa.me/221766395078" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-            // Remove active class from all tabs
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Show selected tab content
-            document.getElementById(tabId).classList.add('active');
-
-            // Add active class to clicked tab
-            event.currentTarget.classList.add('active');
-        }
-
-        // Gestion du choix des véhicules
-        document.querySelectorAll('.vehicle').forEach(vehicle => {
-            vehicle.addEventListener('click', function() {
-                // Retirer la classe selected de toutes les options du même trajet
-                const parentRoute = this.closest('.route');
-                parentRoute.querySelectorAll('.vehicle').forEach(v => {
-                    v.classList.remove('selected');
-                });
-                
-                // Ajouter la classe selected à l'option cliquée
-                this.classList.add('selected');
-                
-                // Mettre à jour le prix affiché
-                const newPrice = this.getAttribute('data-price');
-                parentRoute.querySelector('.price').textContent = newPrice + ' FCFA';
-            });
+<script>
+    // Gestion des onglets
+    function openTab(tabId) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(content => {
+            content.classList.remove('active');
         });
 
-        // Gestion des réservations
-        document.querySelectorAll('.btn-reserve').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const route = this.closest('.route');
-                const routeName = route.querySelector('h3').textContent;
-                const selectedVehicle = route.querySelector('.vehicle.selected');
-                const price = selectedVehicle.getAttribute('data-price');
-                const vehicleType = selectedVehicle.textContent.trim().split('\n')[0];
-                
-                // Construction de l'URL avec les paramètres
-                const params = new URLSearchParams();
-                params.append('trajet', encodeURIComponent(routeName));
-                params.append('vehicule', encodeURIComponent(vehicleType));
-                params.append('prix', price);
-                
-                // Redirection vers contact.html avec les paramètres
-                window.location.href = 'contact.html?' + params.toString();
-            });
+        // Remove active class from all tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.classList.remove('active');
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+        // Show selected tab content
+        document.getElementById(tabId).classList.add('active');
+
+        // Add active class to clicked tab
+        event.currentTarget.classList.add('active');
+    }
+
+    // Gestion du choix des véhicules
+    document.querySelectorAll('.vehicle').forEach(vehicle => {
+        vehicle.addEventListener('click', function() {
+            // Retirer la classe selected de toutes les options du même trajet
+            const parentRoute = this.closest('.route');
+            parentRoute.querySelectorAll('.vehicle').forEach(v => {
+                v.classList.remove('selected');
             });
+            
+            // Ajouter la classe selected à l'option cliquée
+            this.classList.add('selected');
+            
+            // Mettre à jour le prix affiché
+            const newPrice = this.getAttribute('data-price');
+            parentRoute.querySelector('.price').textContent = newPrice + ' FCFA';
         });
-    </script>
-    <!-- Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    });
+
+    // Gestion des réservations
+    document.querySelectorAll('.btn-reserve').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const route = this.closest('.route');
+            const routeName = route.querySelector('h3').textContent;
+            const selectedVehicle = route.querySelector('.vehicle.selected');
+            const price = selectedVehicle.getAttribute('data-price');
+            const vehicleType = selectedVehicle.textContent.trim().split('\n')[0];
+            
+            // Construction de l'URL avec les paramètres
+            const params = new URLSearchParams();
+            params.append('trajet', routeName);
+            params.append('vehicule', vehicleType);
+            params.append('prix', price);
+            
+            // Redirection vers la page de contact avec les paramètres
+            window.location.href = 'reservation.html?' + params.toString();
+        });
+    });
+
+    // Gestion du menu hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu lorsqu'un lien est cliqué
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
 </body>
 </html>

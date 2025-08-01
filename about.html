@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | TAXI-AIBD - Transfert Aéroport Blaise Diagne</title>
+    <title>À Propos | TAXI-AIBD - Transfert Aéroport Blaise Diagne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Styles de base identiques à votre page d'accueil */
+        /* Réutilisation du style de la page d'accueil */
         :root {
             --primary-color: #003366;
             --secondary-color: #E67E22;
@@ -83,7 +83,7 @@
             display: none;
             cursor: pointer;
             z-index: 100;
-            margin-left: auto;
+            margin-left: auto; /* Aligné à droite */
         }
 
         .hamburger div {
@@ -94,8 +94,8 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section */
-        .contact-hero {
+        /* Hero Section adaptée */
+        .about-hero {
             background: var(--primary-color);
             background-size: cover;
             background-position: center;
@@ -104,35 +104,30 @@
             color: var(--white);
         }
 
-        .contact-hero h1 {
+        .about-hero h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .contact-hero p {
+        .about-hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
         }
 
-        /* Contenu Contact */
-        .contact-container {
+        /* Contenu À propos */
+        .about-content {
             max-width: 1200px;
             margin: 50px auto;
             padding: 0 5%;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .contact-info, .contact-form {
+        .about-section {
             background: var(--white);
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             padding: 40px;
+            margin-bottom: 40px;
         }
 
         .section-title {
@@ -153,121 +148,91 @@
             background: var(--secondary-color);
         }
 
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
+        .about-text {
             margin-bottom: 25px;
+            line-height: 1.8;
         }
 
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
-
-        .info-content h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .info-content p, .info-content a {
-            color: var(--text-color);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .info-content a {
+        .highlight {
             color: var(--secondary-color);
             font-weight: 600;
-            text-decoration: none;
         }
 
-        .info-content a:hover {
-            text-decoration: underline;
+        /* Grille valeurs */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        /* Formulaire */
-        .form-group {
+        .value-card {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
             margin-bottom: 20px;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
+        .value-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
         }
 
-        .required {
-            color: var(--secondary-color);
+        /* Galerie véhicules */
+        .vehicle-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
 
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-size: 1rem;
+        .vehicle-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: all 0.3s;
         }
 
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
-        textarea {
-            min-height: 150px;
-            resize: vertical;
+        .vehicle-img {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: var(--secondary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+        .vehicle-info {
+            padding: 15px;
+            background: var(--white);
+        }
+
+        .vehicle-type {
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            width: 100%;
-            margin-top: 10px;
-            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 5px;
         }
 
-        .btn:hover {
-            background: #d35400;
-            transform: translateY(-2px);
+        .vehicle-capacity {
+            font-size: 0.9rem;
+            color: #666;
         }
 
-        .whatsapp-btn {
-            background: #25D366;
-        }
-
-        .whatsapp-btn:hover {
-            background: #128C7E;
-        }
-
-        /* Footer identique */
+        /* Footer identique à l'accueil */
         footer {
             background: var(--primary-color);
             color: var(--white);
@@ -306,7 +271,7 @@
             color: var(--accent-color);
         }
 
-        .contact-info-footer p {
+        .contact-info p {
             margin-bottom: 10px;
             display: flex;
             align-items: center;
@@ -338,7 +303,7 @@
             font-size: 0.9rem;
         }
 
-        /* Bouton WhatsApp flottant */
+         /* Bouton WhatsApp flottant */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -364,58 +329,15 @@
             transform: scale(1.1);
         }
 
-        /* Styles pour le bouton dépliant sur mobile */
-        .toggle-coordonnees {
-            display: none; 
-            background: var(--secondary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 4px;
-            text-align: center;
-            margin-bottom: 15px;
-            cursor: pointer;
-            font-weight: bold;
+        .whatsapp-btn {
+            background: #25D366;
         }
 
-        .toggle-coordonnees i {
-            margin-left: 10px;
-            transition: transform 0.3s;
+        .whatsapp-btn:hover {
+            background: #128C7E;
         }
 
         /* Responsive */
-        @media (max-width: 950px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Styles spécifiques pour le bouton dépliant */
-            .toggle-coordonnees {
-                display: block;
-            }
-
-            .contact-info {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease-out, padding 0.2s ease-out;
-                padding: 0 25px;
-            }
-
-            .contact-info.visible {
-                max-height: 1000px;
-                padding: 25px;
-                transition: max-height 0.5s ease-out, padding 0.2s ease-out;
-            }
-
-            .toggle-coordonnees .fa-chevron-down {
-                transform: rotate(0deg);
-                transition: transform 0.3s ease;
-            }
-
-            .toggle-coordonnees.active .fa-chevron-down {
-                transform: rotate(180deg);
-            }
-        }
-
         @media (max-width: 768px) {
             /* Hamburger menu */
             .hamburger {
@@ -449,9 +371,6 @@
             nav ul li a {
                 font-size: 18px;
             }
-            .contact-hero h1 {
-                font-size: 2rem;
-            }
 
             /* Toggle animation */
             .hamburger.active div:nth-child(1) {
@@ -465,27 +384,44 @@
             .hamburger.active div:nth-child(3) {
                 transform: rotate(45deg) translate(-5px, -6px);
             }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-section {
+                padding: 30px;
+            }
         }
-                
+
         @media (max-width: 365px) {
              nav ul li a {
                 font-size: 12px;
             }
         }
 
+        @media (max-width: 600px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .value-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+            .value-title {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+        }
 
         @media (max-width: 480px) {
-            .contact-hero h1 {
-                font-size: 1.8rem;
+            .section-title {
+                font-size: 1.5rem;
             }
             
-            .contact-form {
-                padding: 25px;
-            }
-
-            .contact-info.visible {
-                max-height: 1000px;
-                padding: 25px;
+            .about-hero h1 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -513,100 +449,111 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="contact-hero">
-        <h1>Contactez TAXI-AIBD</h1>
-        <p>Notre équipe est disponible 24h/24 pour répondre à vos demandes</p>
+    <section class="about-hero">
+        <h1>Notre Engagement</h1>
+        <p>Découvrez les valeurs qui guident notre service de transfert premium</p>
     </section>
 
-    <!-- Contenu Contact -->
-    <div class="contact-container">
-        <div class="contact-grid">
-            <!-- Colonne Informations -->
-            <div>
-                <div class="toggle-coordonnees" onclick="toggleCoordonnees()">
-                    Afficher nos coordonnées <i class="fas fa-chevron-down"></i>
-                </div>
-                
-                <div class="contact-info" id="coordonnees-content">
-                    <h2 class="section-title">Nos coordonnées</h2>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div class="info-content">
-                            <h3>Téléphone & WhatsApp</h3>
-                            <p><a href="tel:+221766395078">(+221) 77 241 87 61</a></p>
-                            <p>Service disponible 24h/24, 7j/7</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="info-content">
-                            <h3>Email</h3>
-                            <p><a href="mailto:contact@taxi-aibd.com">contact@taxi-aibd.com</a></p>
-                            <p>Réponse garantie dans les 2 heures</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="info-content">
-                            <h3>Zone d'intervention</h3>
-                            <p>Dakar, Saly, etc... (à voir enssemble)</p>
-                            <p>Et toute la région de l'aéroport Blaise Diagne</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Contenu À propos -->
+    <div class="about-content">
+        <section class="about-section">
+            <h2 class="section-title">Qui Sommes-Nous ?</h2>
+            <p class="about-text">
+                <span class="highlight">TAXI-AIBD</span> est une société de transport avec chauffeur basée au Sénégal, spécialisée dans les services de transferts et navettes depuis ou vers l'aéroport international Blaise Diagne (AIBD). Nous combinons <span class="highlight">un service de prestige</span> à des tarifs compétitifs pour offrir une expérience de voyage exceptionnelle.
+            </p>
             
-            <!-- Colonne Formulaire -->
-            <div class="contact-form">
-                <h2 class="section-title">Formulaire de contact</h2>
-                <p>Remplissez ce formulaire pour toute demande d'information</p>
+            <p class="about-text">
+                Notre mission est de révolutionner les transferts aéroportuaires en Afrique de l'Ouest en proposant un service <span class="highlight">fiable, ponctuel et haut de gamme</span>, tout en maintenant une accessibilité tarifaire sans compromis sur la qualité.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">Notre Philosophie de Service</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-clock"></i></div>
+                    <h3 class="value-title">Ponctualité</h3>
+                    <p>Suivi rigoureux des plans de vol pour une prise en charge à l'heure, chaque fois</p>
+                </div>
                 
-                <form id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nom">Nom complet <span class="required">*</span></label>
-                            <input type="text" id="nom" name="nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telephone">Téléphone <span class="required">*</span></label>
-                            <input type="tel" id="telephone" name="telephone" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="sujet">Sujet <span class="required">*</span></label>
-                        <select id="sujet" name="sujet" required>
-                            <option value="">Sélectionnez un sujet...</option>
-                            <option value="reservation">Réservation de transfert</option>
-                            <option value="information">Demande d'information</option>
-                            <option value="groupe">Service pour groupe</option>
-                            <option value="autre">Autre demande</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Envoyer le message</button>
-                    <button type="button" class="btn whatsapp-btn" onclick="window.open('https://wa.me/221766395078', '_blank')">
-                        <i class="fab fa-whatsapp"></i> Contacter par WhatsApp
-                    </button>
-                </form>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3 class="value-title">Assistance Complète</h3>
+                    <p>Aide au chargement des bagages et prise en charge de vos besoins immédiats</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="value-title">Disponibilité 24/7</h3>
+                    <p>Équipe dédiée disponible à toute heure pour répondre à vos demandes</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-star"></i></div>
+                    <h3 class="value-title">Service Premium</h3>
+                    <p>Chauffeurs professionnels formés aux standards internationaux</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">Transferts Aéroport</h2>
+            <p class="about-text">
+                Nous mettons tout en œuvre pour que <span class="highlight">dès votre arrivée</span> comme à votre départ, vous bénéficiez des meilleures conditions d'accueil. Nos chauffeurs professionnels, ponctuels et courtois, assurent une transition fluide entre l'aéroport et votre destination finale.
+            </p>
+            
+            <p class="about-text">
+                Pour les <span class="highlight">événements professionnels et groupes</span>, nous proposons une assistance sur mesure avec gestion personnalisée des arrivées et départs, garantissant une logistique impeccable pour vos invités ou collaborateurs.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">Notre Flotte Véhicule</h2>
+            <p class="about-text">
+                Nous proposons une <span class="highlight">large gamme de véhicules</span> soigneusement entretenus pour répondre à tous vos besoins de déplacement :
+            </p>
+            
+            <div class="vehicle-gallery">
+                <div class="vehicle-card">
+                    <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-type">Berline Standard</div>
+                        <div class="vehicle-capacity">3 - 4 passagers <br> 2-3 bagages</div>
+                    </div>
+                </div>
+                
+                <div class="vehicle-card">
+                    <div class="vehicle-img" style="background-image: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-type">Berline VIP</div>
+                        <div class="vehicle-capacity">3 - 4 passagers <br> 3 bagages</div>
+                    </div>
+                </div>
+                
+                <div class="vehicle-card">
+                    <div class="vehicle-img" style="background-image: url('https://st.depositphotos.com/1433239/4860/i/450/depositphotos_48607581-stock-photo-minibus-goes-on-the-city.jpg');"></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-type">Minibus</div>
+                        <div class="vehicle-capacity">8 passagers <br> 6-8 bagages</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2 class="section-title">Votre Expérience</h2>
+            <p class="about-text">
+                Chez <span class="highlight">TAXI-AIBD</span>, nous croyons que chaque déplacement devrait être une expérience agréable et sans stress. C'est pourquoi nous nous engageons à vous offrir un service qui combine <span class="highlight">efficacité, confort et sérénité</span>.
+            </p>
+            
+            <p class="about-text">
+                Venez découvrir la différence TAXI-AIBD et <span class="highlight">voyagez en toute tranquillité</span>, en sachant que chaque détail a été pensé pour votre bien-être.
+            </p>
+        </section>
     </div>
 
-    <!-- Footer identique -->
+    <!-- Footer identique à la page d'accueil -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -626,7 +573,7 @@
                     <li><a href="./index.html">Accueil</a></li>
                     <li><a href="./about.html">À Propos</a></li>
                     <li><a href="#">Nos tarifs</a></li>
-                    <li><a href="./contact.html">Contactez-nous</a></li>
+                    <li><a href="./contact.html">Contactez-Nous</a></li>
                 </ul>
             </div>
 
@@ -642,7 +589,7 @@
 
             <div class="footer-column">
                 <h3>Contact</h3>
-                <div class="contact-info-footer">
+                <div class="contact-info">
                     <p><i class="fas fa-phone"></i> (+221) 77 241 87 61</p>
                     <p><i class="fas fa-envelope"></i> contact@taxi-aibd.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Aéroport Blaise Diagne, Dakar</p>
@@ -655,30 +602,12 @@
         </div>
     </footer>
 
-    <!-- Bouton WhatsApp flottant -->
+    <!-- Bouton WhatsApp -->
     <a href="https://wa.me/221766395078" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        // Fonction pour le bouton dépliant
-        function toggleCoordonnees() {
-            const content = document.getElementById('coordonnees-content');
-            const button = document.querySelector('.toggle-coordonnees');
-            
-            content.classList.toggle('visible');
-            button.classList.toggle('active');
-        }
-        
-        // Gestion de l'envoi du formulaire
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Ici vous ajouteriez le code pour envoyer le formulaire
-            alert('Votre message a bien été envoyé ! Nous vous répondrons dans les plus brefs délais.');
-            this.reset();
-        });
-
         // Gestion du menu hamburger
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
