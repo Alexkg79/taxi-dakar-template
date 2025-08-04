@@ -498,55 +498,56 @@
                 transform: rotate(180deg);
             }
         }
+        @media (max-width: 840px) {
+        /* Hamburger menu */
+        .hamburger {
+            display: block;
+        }
+
+        nav ul {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 60%;
+            background: var(--white);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: right 0.5s ease-in-out;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+            z-index: 90;
+        }
+
+        nav ul.active {
+            right: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+        }
+
+        /* Toggle animation */
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    }
 
         @media (max-width: 768px) {
-            /* Hamburger menu */
-            .hamburger {
-                display: block;
-            }
-
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 60%;
-                background: var(--white);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-                transition: right 0.5s ease-in-out;
-                box-shadow: -5px 0 10px rgba(0,0,0,0.1);
-                z-index: 90;
-            }
-
-            nav ul.active {
-                right: 0;
-            }
-
-            nav ul li {
-                margin: 15px 0;
-            }
-
-            nav ul li a {
-                font-size: 18px;
-            }
-
-            /* Toggle animation */
-            .hamburger.active div:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .hamburger.active div:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active div:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .reservation-hero h1 {
+        .reservation-hero h1 {
                 font-size: 2rem;
             }
         }
@@ -599,7 +600,8 @@
             <ul>
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li><a href="./about.html">A PROPOS</a></li>
-                <li><a href="#">NOS TARIFS</a></li>
+                <li><a href="./tarifs.html">NOS TARIFS</a></li>
+                <li><a href="./flottes.html">NOTRE FLOTTES</a></li>
                 <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>

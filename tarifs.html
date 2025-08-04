@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAXI-AIBD | Nos Tarifs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    /* ===================== */
+    /* VARIABLES & BASE STYLE */
+    /* ===================== */
+    :root {
+        --primary-color: #003366;
+        --secondary-color: #E67E22;
+        --accent-color: #F1C40F;
+        --text-color: #333333;
+        --light-gray: #F5F5F5;
+        --white: #FFFFFF;
+        --border-color: #DDDDDD;
+        --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+        --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background-color: var(--light-gray);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ======== */
+    /* HEADER */
+    /* ======== */
+    header {
+        background: var(--white);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        z-index: 90;
+    }
+
+    /* Navigation */
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 25px;
+    }
+
+    nav ul li a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+        color: var(--secondary-color);
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        z-index: 100;
+        margin-left: auto;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-color);
+        margin: 5px;
+        transition: var(--transition);
+    }
+
+    /* ======== */
+    /* HERO */
+    /* ======== */
+.page-hero {
+    background: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    padding: 60px 5%;
+    height: 236px;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
+
+.page-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+
+.page-hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+    /* ======== */
+    /* TARIFFS SECTION */
+    /* ======== */
+    .tariffs-section {
+        padding: 60px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 50px;
+        position: relative;
+        color: var(--primary-color);
+    }
+    
+    .section-title span {
+        color: var(--secondary-color);
+    }
+    
+    .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 15px auto 0;
+    }
+
+    .tariffs-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .tariff-card {
+        background: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+    }
+
+    .tariff-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .tariff-header {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .tariff-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+
+    .tariff-header p {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+
+    .tariff-body {
+        padding: 25px;
+    }
+
+    .tariff-features {
+        margin-bottom: 25px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+    }
+
+    .feature-item i {
+        color: var(--accent-color);
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .tariff-price {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .tariff-cta {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-primary {
+        background: var(--secondary-color);
+        color: var(--white);
+        padding: 15px 30px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-primary:hover {
+        background: #D35400;
+        transform: translateY(-2px);
+    }
+
+    .contact-cta {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px;
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .contact-cta h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+    }
+
+    .btn-secondary {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 15px 30px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .btn-secondary:hover {
+        background: #002244;
+        transform: translateY(-2px);
+    }
+
+    /* ======== */
+    /* FOOTER */
+    /* ======== */
+    footer {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 50px 5% 30px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-column h3 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+        color: var(--white);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--accent-color);
+    }
+
+    .contact-info p {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        color: var(--white);
+        font-size: 1.2rem;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+    }
+
+    /* ================== */
+    /* WHATSAPP BUTTON */
+    /* ================== */
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25D366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1);
+    }
+
+    /* ================== */
+    /* RESPONSIVE STYLES */
+    /* ================== */
+    @media (max-width: 840px) {
+        /* Hamburger menu */
+        .hamburger {
+            display: block;
+        }
+
+        nav ul {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 60%;
+            background: var(--white);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: right 0.5s ease-in-out;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+            z-index: 90;
+        }
+
+        nav ul.active {
+            right: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+        }
+
+        /* Toggle animation */
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    }
+    @media (max-width: 768px) {
+        .page-hero {
+            --hero-min-height: 250px;
+            padding: 40px 5%;
+        }
+        
+        .page-hero-title {
+            font-size: 2rem;
+        }
+        
+        .page-hero-subtitle {
+            font-size: 1rem;
+        }
+
+        .tariffs-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .page-hero {
+            --hero-min-height: 200px;
+        }
+        
+        .page-hero-title {
+            font-size: 1.8rem;
+        }
+
+        nav ul li a {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 365px) {
+        nav ul li a {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">TAXI-AIBD</div>
+        
+        <!-- Hamburger Menu -->
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="./index.html">ACCUEIL</a></li>
+                <li><a href="./about.html">A PROPOS</a></li>
+                <li><a href="./tarifs.html">NOS TARIFS</a></li>
+                <li><a href="./flottes.html">NOTRE FLOTTES</a></li>
+                <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-background"></div>
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">Nos Tarifs</h1>
+            <p class="page-hero-subtitle">Découvrez nos offres de transfert premium vers l'aéroport Blaise Diagne</p>
+        </div>
+    </section>
+
+    <!-- Tariffs Section -->
+    <section class="tariffs-section">
+        <h2 class="section-title">Nos <span>Offres</span></h2>
+        
+        <div class="tariffs-container">
+            <!-- Berline Basique -->
+            <div class="tariff-card">
+                <div class="tariff-header">
+                    <h3>Berline premium</h3>
+                </div>
+                <div class="tariff-body">
+                    <div class="tariff-features">
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>3-4 passagers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-suitcase"></i>
+                            <span>2-3 bagages</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-car"></i>
+                            <span>Véhicule confortable</span>
+                        </div>
+                                                <div class="feature-item">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Chauffeur professionnel</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Service 24h/24</span>
+                        </div>
+                    </div>
+                    <div class="tariff-price">35 000 FCFA</div>
+                    <div class="tariff-cta">
+                        <button class="btn-primary">Réserver maintenant</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Berline VIP -->
+            <div class="tariff-card">
+                <div class="tariff-header">
+                    <h3>Berline VIP</h3>
+                </div>
+                <div class="tariff-body">
+                    <div class="tariff-features">
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>4 passagers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-suitcase"></i>
+                            <span>3 bagages</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-car"></i>
+                            <span>Véhicule haut de gamme</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-star"></i>
+                            <span>Service premium</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Service 24h/24</span>
+                        </div>
+                    </div>
+                    <div class="tariff-price">50 000 FCFA</div>
+                    <div class="tariff-cta">
+                        <button class="btn-primary">Réserver maintenant</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Minibus -->
+            <div class="tariff-card">
+                <div class="tariff-header">
+                    <h3>Minibus</h3>
+                </div>
+                <div class="tariff-body">
+                    <div class="tariff-features">
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>8 passagers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-suitcase"></i>
+                            <span>6-8 bagages</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bus"></i>
+                            <span>Espace spacieux</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Chauffeur professionnel</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Service 24h/24</span>
+                        </div>
+                    </div>
+                    <div class="tariff-price">70 000 FCFA</div>
+                    <div class="tariff-cta">
+                        <button class="btn-primary">Réserver maintenant</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-cta">
+            <h3>Vous avez des questions sur nos tarifs ?</h3>
+            <p>Notre équipe est disponible pour vous conseiller et vous aider à choisir la meilleure option pour votre transfert.</p>
+            <a href="https://wa.me/221766395078" target="_blank" class="btn-secondary" >
+                <i class="fas fa-phone"></i> (+221) 76 639 50 78
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TAXI-AIBD</h3>
+                <p>Service de taxi premium entre l'aéroport Blaise Diagne et Dakar, Saly et toute la région.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="./index.html">Accueil</a></li>
+                    <li><a href="./about.html">À Propos</a></li>
+                    <li><a href="#">Nos tarifs</a></li>
+                    <li><a href="./contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Transfert aéroport</a></li>
+                    <li><a href="#">Transfert Dakar</a></li>
+                    <li><a href="#">Transfert Saly</a></li>
+                    <li><a href="#">Transfert longue distance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> (+221) 77 241 87 61</p>
+                    <p><i class="fas fa-envelope"></i> contact@taxi-aibd.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Aéroport Blaise Diagne, Dakar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 TAXI-AIBD. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Bouton WhatsApp -->
+    <a href="https://wa.me/221766395078" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+<script>
+    // Gestion du menu hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu lorsqu'un lien est cliqué
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Gestion des boutons de réservation
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const card = this.closest('.tariff-card');
+            const title = card.querySelector('.tariff-header h3').textContent;
+            const price = card.querySelector('.tariff-price').textContent;
+            
+            // Construction de l'URL avec les paramètres
+            const params = new URLSearchParams();
+            params.append('service', title);
+            params.append('prix', price);
+            
+            // Redirection vers la page de contact avec les paramètres
+            window.location.href = 'contact.html?' + params.toString();
+        });
+    });
+</script>
+</body>
+</html>
