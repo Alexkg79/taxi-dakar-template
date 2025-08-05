@@ -104,39 +104,35 @@
     /* ======== */
     /* HERO */
     /* ======== */
-    .page-hero {
-        background: var(--primary-color);
-        background-size: cover;
-        background-position: center;
-        padding: 60px 5%;
-        height: 236px;
-        text-align: center;
-        color: var(--white);
-        position: relative;
-    }
+.page-hero {
+    background: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    padding: 60px 5%;
+    height: 236px;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
 
-    .page-hero-content {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+.page-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    .page-hero-title {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
+.page-hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
 
-    .page-hero-title span {
-        color: var(--accent-color);
-        font-weight: 700;
-    }
 
-    .page-hero-subtitle {
-        font-size: 1.2rem;
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.5;
-    }
+.page-hero-subtitle {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
 
     /* ======== */
     /* FLEET SECTION */
@@ -179,8 +175,8 @@
 
     .fleet-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
+        grid-template-columns: 2fr 2fr;
+        gap: 30px;
         margin-top: 40px;
     }
 
@@ -190,6 +186,9 @@
         overflow: hidden;
         box-shadow: var(--shadow-md);
         transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
     .vehicle-card:hover {
@@ -215,6 +214,9 @@
 
     .vehicle-content {
         padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
     }
 
     .vehicle-title {
@@ -232,20 +234,21 @@
 
     .vehicle-features {
         margin-bottom: 20px;
+        flex-grow: 1;
     }
 
     .feature-item {
         display: flex;
-        align-items: center;
-        margin-bottom: 10px;
+        align-items: flex-start;
+        margin-bottom: 12px;
         font-size: 0.95rem;
     }
 
     .feature-item i {
         color: var(--accent-color);
         margin-right: 10px;
-        width: 20px;
-        text-align: center;
+        margin-top: 3px;
+        flex-shrink: 0;
     }
 
     .vehicle-price {
@@ -258,6 +261,7 @@
 
     .vehicle-cta {
         text-align: center;
+        margin-top: auto;
     }
 
     .btn-primary {
@@ -271,6 +275,8 @@
         display: inline-block;
         border: none;
         cursor: pointer;
+        width: 100%;
+        max-width: 250px;
     }
 
     .btn-primary:hover {
@@ -473,9 +479,9 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
     }
+
     @media (max-width: 768px) {
         .page-hero {
-            --hero-min-height: 250px;
             padding: 40px 5%;
         }
         
@@ -496,26 +502,22 @@
         }
     }
 
-    @media (max-width: 621px) {
+    @media (max-width: 630px) {
     .advantages-grid {
         grid-template-columns: 1fr;
     }
     }
     @media (max-width: 480px) {
-        .page-hero {
-            --hero-min-height: 200px;
-        }
-        
         .page-hero-title {
             font-size: 1.8rem;
         }
 
-        nav ul li a {
-            font-size: 16px;
-        }
-
         .fleet-advantages {
             padding: 25px 15px;
+        }
+
+        nav ul li a {
+            font-size: 16px;
         }
     }
 
@@ -543,7 +545,7 @@
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li><a href="./about.html">A PROPOS</a></li>
                 <li><a href="./tarifs.html">NOS TARIFS</a></li>
-                <li><a href="./flottes.html">NOTRE FLOTTES</a></li>
+                <li><a href="./flottes.html">NOTRE FLOTTE</a></li>
                 <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>
@@ -551,7 +553,6 @@
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <div class="page-hero-background"></div>
         <div class="page-hero-content">
             <h1 class="page-hero-title">Notre Flotte</h1>
             <p class="page-hero-subtitle">Découvrez nos véhicules haut de gamme pour un transfert confortable et sécurisé</p>
@@ -563,18 +564,18 @@
         <h2 class="section-title">Nos <span>Véhicules</span></h2>
         
         <div class="fleet-intro">
-            <p>TAXI-AIBD met à votre disposition une flotte de véhicules récents, confortables et parfaitement entretenus. Que vous voyagiez seul, en famille ou en groupe, nous avons le véhicule adapté à vos besoins. Tous nos chauffeurs sont professionnels, expérimentés et formés aux standards internationaux de service.</p>
+            <p>TAXI-AIBD met à votre disposition une flotte de 4 types de véhicules récents, confortables et parfaitement entretenus. Que vous voyagiez seul, en famille ou en groupe, nous avons le véhicule adapté à vos besoins.</p>
         </div>
         
         <div class="fleet-container">
             <!-- Berline Standard -->
             <div class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1583&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Berline Standard">
+                    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Berline Standard">
                 </div>
                 <div class="vehicle-content">
                     <h3 class="vehicle-title">Berline Standard</h3>
-                    <p class="vehicle-subtitle">Confort et élégance pour vos déplacements</p>
+                    <p class="vehicle-subtitle">Confort et fiabilité pour vos déplacements</p>
                     
                     <div class="vehicle-features">
                         <div class="feature-item">
@@ -587,7 +588,7 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-car"></i>
-                            <span><strong>Modèles:</strong> Toyota Corolla, Hyundai Elantra</span>
+                            <span><strong>Modèles:</strong> Toyota Corolla</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-snowflake"></i>
@@ -603,13 +604,49 @@
                 </div>
             </div>
             
-            <!-- Berline VIP -->
+            <!-- SUV/4x4 -->
             <div class="vehicle-card">
                 <div class="vehicle-image">
-                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Berline VIP">
+                    <img src="https://images.unsplash.com/photo-1622893288761-823ba60f17a6?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="SUV/4x4">
                 </div>
                 <div class="vehicle-content">
-                    <h3 class="vehicle-title">Berline VIP</h3>
+                    <h3 class="vehicle-title">SUV/4x4</h3>
+                    <p class="vehicle-subtitle">Espace et polyvalence pour tous terrains</p>
+                    
+                    <div class="vehicle-features">
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span><strong>Capacité:</strong> 5-7 passagers</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-suitcase"></i>
+                            <span><strong>Bagages:</strong> 4-5 valises</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-car"></i>
+                            <span><strong>Modèles:</strong> Toyota Rush, Prado</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-road"></i>
+                            <span><strong>Tous terrains:</strong> Oui</span>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-price">À partir de 45 000 FCFA</div>
+                    
+                    <div class="vehicle-cta">
+                        <button class="btn-primary">Réserver ce véhicule</button>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Berline Premium -->
+            <div class="vehicle-card">
+                <div class="vehicle-image">
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Berline Premium">
+                </div>
+                <div class="vehicle-content">
+                    <h3 class="vehicle-title">Berline Premium</h3>
                     <p class="vehicle-subtitle">Prestige et raffinement pour vos déplacements</p>
                     
                     <div class="vehicle-features">
@@ -623,11 +660,11 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-car"></i>
-                            <span><strong>Modèles:</strong> Mercedes Classe E, BMW Série 5</span>
+                            <span><strong>Modèles:</strong> Mercedes Classe C/E</span>
                         </div>
                         <div class="feature-item">
-                            <i class="fas fa-snowflake"></i>
-                            <span><strong>Climatisation:</strong> Oui</span>
+                            <i class="fas fa-wifi"></i>
+                            <span><strong>WiFi:</strong> Disponible</span>
                         </div>
                     </div>
                     
@@ -646,12 +683,12 @@
                 </div>
                 <div class="vehicle-content">
                     <h3 class="vehicle-title">Minibus</h3>
-                    <p class="vehicle-subtitle">Espace et confort pour les groupes</p>
+                    <p class="vehicle-subtitle">Confort et espace pour les groupes</p>
                     
                     <div class="vehicle-features">
                         <div class="feature-item">
                             <i class="fas fa-users"></i>
-                            <span><strong>Capacité:</strong> 8 passagers</span>
+                            <span><strong>Capacité:</strong> 8-14 passagers</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-suitcase"></i>
@@ -659,7 +696,7 @@
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-bus"></i>
-                            <span><strong>Modèles:</strong> Toyota Hiace, Mercedes Vito</span>
+                            <span><strong>Modèles:</strong> Toyota Hiace</span>
                         </div>
                         <div class="feature-item">
                             <i class="fas fa-snowflake"></i>
@@ -743,6 +780,7 @@
                     <li><a href="./index.html">Accueil</a></li>
                     <li><a href="./about.html">À Propos</a></li>
                     <li><a href="./tarifs.html">Nos tarifs</a></li>
+                    <li><a href="./flottes.html">Notre flotte</a></li>
                     <li><a href="./contact.html">Contactez-nous</a></li>
                 </ul>
             </div>
@@ -750,10 +788,10 @@
             <div class="footer-column">
                 <h3>Services</h3>
                 <ul>
-                    <li><a href="#">Transfert aéroport</a></li>
-                    <li><a href="#">Transfert Dakar</a></li>
-                    <li><a href="#">Transfert Saly</a></li>
-                    <li><a href="#">Transfert longue distance</a></li>
+                    <li><a href="./services.html">Transfert aéroport</a></li>
+                    <li><a href="./services.html">Transfert Dakar</a></li>
+                    <li><a href="./services.html">Transfert Saly</a></li>
+                    <li><a href="./services.html">Transfert Longue Distance</a></li>
                 </ul>
             </div>
 
@@ -773,7 +811,7 @@
     </footer>
 
     <!-- Bouton WhatsApp -->
-    <a href="https://wa.me/221766395078" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/221772418761" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -808,7 +846,7 @@
             params.append('prix', price);
             
             // Redirection vers la page de contact avec les paramètres
-            window.location.href = 'reservation.html?' + params.toString();
+            window.location.href = 'index.html?' + "#reservation";
         });
     });
 </script>

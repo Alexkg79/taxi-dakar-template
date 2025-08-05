@@ -104,7 +104,7 @@
     /* ======== */
     /* HERO */
     /* ======== */
-.page-hero {
+   .page-hero {
     background: var(--primary-color);
     background-size: cover;
     background-position: center;
@@ -164,82 +164,75 @@
         margin: 15px auto 0;
     }
 
-    .tariffs-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    .tariff-card {
+    .trajet-section {
+        margin-bottom: 40px;
         background: var(--white);
         border-radius: 8px;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
-        transition: var(--transition);
-    }
-
-    .tariff-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-
-    .tariff-header {
-        background: var(--primary-color);
-        color: var(--white);
         padding: 20px;
-        text-align: center;
+        box-shadow: var(--shadow-md);
     }
 
-    .tariff-header h3 {
+    .trajet-section-title {
+        color: var(--primary-color);
         font-size: 1.5rem;
-        margin-bottom: 5px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--accent-color);
     }
 
-    .tariff-header p {
-        font-size: 1rem;
-        opacity: 0.9;
+    .trajet-list {
+        list-style: none;
     }
 
-    .tariff-body {
-        padding: 25px;
-    }
-
-    .tariff-features {
-        margin-bottom: 25px;
-    }
-
-    .feature-item {
+    .trajet-item {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        margin-bottom: 10px;
-        font-size: 0.95rem;
+        padding: 15px 10px;
+        border-bottom: 1px solid var(--border-color);
     }
 
-    .feature-item i {
-        color: var(--accent-color);
-        margin-right: 10px;
-        width: 20px;
-        text-align: center;
+    .trajet-item:last-child {
+        border-bottom: none;
     }
 
-    .tariff-price {
-        font-size: 2rem;
+    .trajet-info {
+        flex: 2;
+    }
+
+    .trajet-name {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+    }
+
+    .trajet-description {
+        font-size: 0.9rem;
+        color: var(--text-color);
+        opacity: 0.8;
+    }
+
+    .trajet-price {
+        flex: 1;
+        text-align: right;
+    }
+
+    .price-amount {
+        font-size: 1.3rem;
         font-weight: bold;
         color: var(--secondary-color);
-        text-align: center;
-        margin: 25px 0;
     }
 
-    .tariff-cta {
-        text-align: center;
-        margin-top: 20px;
+    .price-note {
+        font-size: 0.8rem;
+        color: var(--text-color);
+        opacity: 0.7;
     }
 
     .btn-primary {
         background: var(--secondary-color);
         color: var(--white);
-        padding: 15px 30px;
+        padding: 10px 20px;
         border-radius: 4px;
         text-decoration: none;
         font-weight: bold;
@@ -247,8 +240,8 @@
         display: inline-block;
         border: none;
         cursor: pointer;
-        width: 100%;
         text-align: center;
+        font-size: 0.9rem;
     }
 
     .btn-primary:hover {
@@ -442,10 +435,10 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
     }
+
     @media (max-width: 768px) {
         .page-hero {
-            --hero-min-height: 250px;
-            padding: 40px 5%;
+            padding: 60px 5%;
         }
         
         .page-hero-title {
@@ -456,14 +449,21 @@
             font-size: 1rem;
         }
 
-        .tariffs-container {
-            grid-template-columns: 1fr;
+        .trajet-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .trajet-price {
+            text-align: left;
+            margin-top: 10px;
+            width: 100%;
         }
     }
 
     @media (max-width: 480px) {
         .page-hero {
-            --hero-min-height: 200px;
+            padding: 50px 5%;
         }
         
         .page-hero-title {
@@ -499,7 +499,7 @@
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li><a href="./about.html">A PROPOS</a></li>
                 <li><a href="./tarifs.html">NOS TARIFS</a></li>
-                <li><a href="./flottes.html">NOTRE FLOTTES</a></li>
+                <li><a href="./flottes.html">NOTRE FLOTTE</a></li>
                 <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>
@@ -507,129 +507,141 @@
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <div class="page-hero-background"></div>
         <div class="page-hero-content">
-            <h1 class="page-hero-title">Nos Tarifs</h1>
-            <p class="page-hero-subtitle">Découvrez nos offres de transfert premium vers l'aéroport Blaise Diagne</p>
+            <h1 class="page-hero-title">Nos <span>Tarifs</span></h1>
+            <p class="page-hero-subtitle">Découvrez nos tarifs de transfert vers l'aéroport Blaise Diagne et autres destinations</p>
         </div>
     </section>
 
     <!-- Tariffs Section -->
     <section class="tariffs-section">
-        <h2 class="section-title">Nos <span>Offres</span></h2>
+        <h2 class="section-title">Nos <span>Trajets</span></h2>
         
-        <div class="tariffs-container">
-            <!-- Berline Basique -->
-            <div class="tariff-card">
-                <div class="tariff-header">
-                    <h3>Berline premium</h3>
-                </div>
-                <div class="tariff-body">
-                    <div class="tariff-features">
-                        <div class="feature-item">
-                            <i class="fas fa-users"></i>
-                            <span>3-4 passagers</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-suitcase"></i>
-                            <span>2-3 bagages</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-car"></i>
-                            <span>Véhicule confortable</span>
-                        </div>
-                                                <div class="feature-item">
-                            <i class="fas fa-user-tie"></i>
-                            <span>Chauffeur professionnel</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Service 24h/24</span>
-                        </div>
+        <!-- Section Départ AIBD -->
+        <div class="trajet-section">
+            <h3 class="trajet-section-title">Départ depuis l'Aéroport AIBD</h3>
+            <ul class="trajet-list">
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">AIBD → Dakar</div>
+                        <div class="trajet-description">Transfert vers le centre-ville de Dakar</div>
                     </div>
-                    <div class="tariff-price">35 000 FCFA</div>
-                    <div class="tariff-cta">
-                        <button class="btn-primary">Réserver maintenant</button>
+                    <div class="trajet-price">
+                        <div class="price-amount">35 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Berline VIP -->
-            <div class="tariff-card">
-                <div class="tariff-header">
-                    <h3>Berline VIP</h3>
-                </div>
-                <div class="tariff-body">
-                    <div class="tariff-features">
-                        <div class="feature-item">
-                            <i class="fas fa-users"></i>
-                            <span>4 passagers</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-suitcase"></i>
-                            <span>3 bagages</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-car"></i>
-                            <span>Véhicule haut de gamme</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-star"></i>
-                            <span>Service premium</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Service 24h/24</span>
-                        </div>
+                </li>
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">AIBD → Saly</div>
+                        <div class="trajet-description">Transfert vers la station balnéaire de Saly</div>
                     </div>
-                    <div class="tariff-price">50 000 FCFA</div>
-                    <div class="tariff-cta">
-                        <button class="btn-primary">Réserver maintenant</button>
+                    <div class="trajet-price">
+                        <div class="price-amount">45 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Minibus -->
-            <div class="tariff-card">
-                <div class="tariff-header">
-                    <h3>Minibus</h3>
-                </div>
-                <div class="tariff-body">
-                    <div class="tariff-features">
-                        <div class="feature-item">
-                            <i class="fas fa-users"></i>
-                            <span>8 passagers</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-suitcase"></i>
-                            <span>6-8 bagages</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-bus"></i>
-                            <span>Espace spacieux</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-user-tie"></i>
-                            <span>Chauffeur professionnel</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Service 24h/24</span>
-                        </div>
+                </li>
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">AIBD → Mbour</div>
+                        <div class="trajet-description">Transfert vers la ville côtière de Mbour</div>
                     </div>
-                    <div class="tariff-price">70 000 FCFA</div>
-                    <div class="tariff-cta">
-                        <button class="btn-primary">Réserver maintenant</button>
+                    <div class="trajet-price">
+                        <div class="price-amount">40 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Section Arrivée AIBD -->
+        <div class="trajet-section">
+            <h3 class="trajet-section-title">Arrivée à l'Aéroport AIBD</h3>
+            <ul class="trajet-list">
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">Dakar → AIBD</div>
+                        <div class="trajet-description">Transfert depuis le centre-ville de Dakar</div>
+                    </div>
+                    <div class="trajet-price">
+                        <div class="price-amount">35 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
+                    </div>
+                </li>
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">Saly → AIBD</div>
+                        <div class="trajet-description">Transfert depuis la station balnéaire de Saly</div>
+                    </div>
+                    <div class="trajet-price">
+                        <div class="price-amount">45 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
+                    </div>
+                </li>
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">Mbour → AIBD</div>
+                        <div class="trajet-description">Transfert depuis la ville côtière de Mbour</div>
+                    </div>
+                    <div class="trajet-price">
+                        <div class="price-amount">40 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Section Autres Trajets -->
+        <div class="trajet-section">
+            <h3 class="trajet-section-title">Autres Trajets</h3>
+            <ul class="trajet-list">
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">Dakar → Touba</div>
+                        <div class="trajet-description">Trajet vers la ville sainte de Touba</div>
+                    </div>
+                    <div class="trajet-price">
+                        <div class="price-amount">60 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
+                    </div>
+                </li>
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">Dakar → Mbour</div>
+                        <div class="trajet-description">Trajet vers la ville côtière de Mbour</div>
+                    </div>
+                    <div class="trajet-price">
+                        <div class="price-amount">45 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
+                    </div>
+                </li>
+                <li class="trajet-item">
+                    <div class="trajet-info">
+                        <div class="trajet-name">Dakar → Thiès</div>
+                        <div class="trajet-description">Trajet vers la ville de Thiès</div>
+                    </div>
+                    <div class="trajet-price">
+                        <div class="price-amount">40 000 FCFA</div>
+                        <div class="price-note">À partir de (selon véhicule)</div>
+                        <button class="btn-primary">Réserver</button>
+                    </div>
+                </li>
+            </ul>
         </div>
         
         <div class="contact-cta">
             <h3>Vous avez des questions sur nos tarifs ?</h3>
-            <p>Notre équipe est disponible pour vous conseiller et vous aider à choisir la meilleure option pour votre transfert.</p>
-            <a href="https://wa.me/221766395078" target="_blank" class="btn-secondary" >
-                <i class="fas fa-phone"></i> (+221) 76 639 50 78
+            <p>Nos tarifs peuvent varier selon le type de véhicule choisi et la période. Contactez-nous pour un devis précis.</p>
+            <a href="tel:+221772418761" class="btn-secondary">
+                <i class="fas fa-phone"></i> (+221) 77 241 87 61
             </a>
         </div>
     </section>
@@ -653,7 +665,8 @@
                 <ul>
                     <li><a href="./index.html">Accueil</a></li>
                     <li><a href="./about.html">À Propos</a></li>
-                    <li><a href="#">Nos tarifs</a></li>
+                    <li><a href="./tarifs.html">Nos tarifs</a></li>
+                    <li><a href="./flottes.html">Notre flotte</a></li>
                     <li><a href="./contact.html">Contactez-nous</a></li>
                 </ul>
             </div>
@@ -661,10 +674,10 @@
             <div class="footer-column">
                 <h3>Services</h3>
                 <ul>
-                    <li><a href="#">Transfert aéroport</a></li>
-                    <li><a href="#">Transfert Dakar</a></li>
-                    <li><a href="#">Transfert Saly</a></li>
-                    <li><a href="#">Transfert longue distance</a></li>
+                    <li><a href="./services.html">Transfert aéroport</a></li>
+                    <li><a href="./services.html">Transfert Dakar</a></li>
+                    <li><a href="./services.html">Transfert Saly</a></li>
+                    <li><a href="./services.html">Transfert longue distance</a></li>
                 </ul>
             </div>
 
@@ -684,7 +697,7 @@
     </footer>
 
     <!-- Bouton WhatsApp -->
-    <a href="https://wa.me/221766395078" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/221772418761" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -709,17 +722,17 @@
     // Gestion des boutons de réservation
     document.querySelectorAll('.btn-primary').forEach(btn => {
         btn.addEventListener('click', function() {
-            const card = this.closest('.tariff-card');
-            const title = card.querySelector('.tariff-header h3').textContent;
-            const price = card.querySelector('.tariff-price').textContent;
+            const item = this.closest('.trajet-item');
+            const trajetName = item.querySelector('.trajet-name').textContent;
+            const price = item.querySelector('.price-amount').textContent;
             
             // Construction de l'URL avec les paramètres
             const params = new URLSearchParams();
-            params.append('service', title);
+            params.append('trajet', trajetName);
             params.append('prix', price);
             
             // Redirection vers la page de contact avec les paramètres
-            window.location.href = 'contact.html?' + params.toString();
+            window.location.href = 'index.html?' + "#reservation";
         });
     });
 </script>

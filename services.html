@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAXI-AIBD | Nos Services de Transfert</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    /* ===================== */
+    /* VARIABLES & BASE STYLE */
+    /* ===================== */
+    :root {
+        --primary-color: #003366;
+        --secondary-color: #E67E22;
+        --accent-color: #F1C40F;
+        --text-color: #333333;
+        --light-gray: #F5F5F5;
+        --white: #FFFFFF;
+        --border-color: #DDDDDD;
+        --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+        --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background-color: var(--light-gray);
+        color: var(--text-color);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* ======== */
+    /* HEADER */
+    /* ======== */
+    header {
+        background: var(--white);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: var(--shadow-sm);
+        position: relative;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        z-index: 90;
+    }
+
+    /* Navigation */
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 25px;
+    }
+
+    nav ul li a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+        color: var(--secondary-color);
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        z-index: 100;
+        margin-left: auto;
+    }
+
+    .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary-color);
+        margin: 5px;
+        transition: var(--transition);
+    }
+
+    /* Hero Section */
+    .service-hero {
+        background: var(--primary-color);
+        background-size: cover;
+        background-position: center;
+        padding: 80px 5%;
+        text-align: center;
+        color: var(--white);
+    }
+
+    .service-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .service-hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* ================== */
+    /* SERVICES SECTION */
+    /* ================== */
+    .services-section {
+        padding: 80px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 50px;
+        position: relative;
+        color: var(--primary-color);
+    }
+    
+    .section-title span {
+        color: var(--secondary-color);
+    }
+    
+    .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 15px auto 0;
+    }
+
+    .services-container {
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        gap: 30px;
+    }
+
+    .service-card {
+        background: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .service-image {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+    }
+
+    .service-card:hover .service-image img {
+        transform: scale(1.05);
+    }
+
+    .service-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .service-title {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+
+    .service-description {
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+    }
+
+    .service-features {
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .service-feature {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+    }
+
+    .service-feature i {
+        color: var(--accent-color);
+        margin-right: 10px;
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
+
+    .service-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+    }
+
+    .service-cta {
+        display: inline-block;
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 12px 25px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        text-align: center;
+        margin-top: auto;
+    }
+
+    .service-cta:hover {
+        background: #002244;
+    }
+
+    /* ======== */
+    /* FOOTER */
+    /* ======== */
+    footer {
+        background: var(--primary-color);
+        color: var(--white);
+        padding: 50px 5% 30px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-column h3 {
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+        color: var(--white);
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--accent-color);
+    }
+
+    .contact-info p {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        color: var(--white);
+        font-size: 1.2rem;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.7);
+        font-size: 0.9rem;
+    }
+
+    /* ================== */
+    /* WHATSAPP BUTTON */
+    /* ================== */
+    .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #25D366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        transform: scale(1.1);
+    }
+
+    /* ================== */
+    /* RESPONSIVE STYLES */
+    /* ================== */
+    @media (max-width: 992px) {
+        .service-hero {
+            padding: 60px 5%;
+        }
+        
+        .service-hero h1 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 840px) {
+        /* Hamburger menu */
+        .hamburger {
+            display: block;
+        }
+
+        nav ul {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 60%;
+            background: var(--white);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: right 0.5s ease-in-out;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+            z-index: 90;
+        }
+
+        nav ul.active {
+            right: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+        }
+
+        /* Toggle animation */
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .service-hero h1 {
+            font-size: 2rem;
+        }
+
+        .service-hero p {
+            font-size: 1rem;
+        }
+
+        .services-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .service-hero h1 {
+            font-size: 1.8rem;
+        }
+        
+        .service-hero {
+            padding: 50px 5%;
+        }
+    }
+
+    @media (max-width: 365px) {
+        nav ul li a {
+            font-size: 12px;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">TAXI-AIBD</div>
+        
+        <!-- Hamburger Menu -->
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="./index.html">ACCUEIL</a></li>
+                <li><a href="./about.html">A PROPOS</a></li>
+                <li><a href="./tarifs.html">NOS TARIFS</a></li>
+                <li><a href="./flottes.html">NOTRE FLOTTE</a></li>
+                <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <h1>Réservation TAXI-AIBD</h1>
+        <p>Notre équipe est disponible 24h/24 pour répondre à vos demandes de réservations</p>
+    </section>
+
+    <!-- Services Section -->
+<section class="services-section" id="services">
+        <h2 class="section-title">Nos <span>Services</span></h2>
+        
+        <div class="services-container">
+            <!-- Transfert Aéroport AIBD -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Transfert Aéroport AIBD">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Transfert Aéroport AIBD</h3>
+                    <p class="service-description">Service premium de transfert depuis/vers l'aéroport Blaise Diagne avec un accueil personnalisé et un suivi de vol.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Accueil personnalisé avec panneau nominatif</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-car"></i>
+                            <span>Véhicules climatisés et confortables</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-headset"></i>
+                            <span>Chauffeurs professionnels et courtois</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Tarifs fixes, pas de surprises</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Service 24h/7j adapté aux horaires des vols</span>
+                        </div>
+                    </div>
+                    
+                    <a href="./tarifs.html" class="service-cta">Voir nos tarifs</a>
+                </div>
+            </div>
+            
+            <!-- Transfert Dakar (Courses urbaines) -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1648504735627-6af97e8337a9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Transfert Dakar">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Transfert Dakar (Courses urbaines)</h3>
+                    <p class="service-description">Transport professionnel dans Dakar et sa banlieue pour tous vos déplacements urbains.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-bolt"></i>
+                            <span>Disponibilité immédiate sur appel</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Connaissance parfaite de Dakar et ses environs</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-star"></i>
+                            <span>Véhicules premium pour vos déplacements</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-wallet"></i>
+                            <span>Paiement flexible (espèces, mobile money)</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-clock"></i>
+                            <span>Service de course à l'heure ou au forfait</span>
+                        </div>
+                    </div>
+                    
+                    <a href="./tarifs.html" class="service-cta">Voir nos tarifs</a>
+                </div>
+            </div>
+            
+            <!-- Transfert Saly/Petite Côte -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1743518576341-565e14b77dcc?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Transfert Saly/Petite Côte">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Transfert Saly/Petite Côte</h3>
+                    <p class="service-description">Liaison directe et confortable vers les stations balnéaires de la Petite Côte.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Transfert vers Saly, Somone, Nianning</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-suitcase-rolling"></i>
+                            <span>Idéal pour tourisme et loisirs</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Service aller-retour possible</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-suitcase"></i>
+                            <span>Véhicules spacieux pour bagages</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-water"></i>
+                            <span>Arrêts plage possibles sur demande</span>
+                        </div>
+                    </div>
+                    
+                    <a href="./tarifs.html" class="service-cta">Voir nos tarifs</a>
+                </div>
+            </div>
+            
+            <!-- Transfert Longue Distance -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1587226513115-f1e3439f1a35?q=80&w=1192&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Transfert Longue Distance">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Transfert Longue Distance</h3>
+                    <p class="service-description">Voyages sécurisés et confortables vers les principales villes du Sénégal.</p>
+                    
+                    <div class="service-features">
+                        <div class="service-feature">
+                            <i class="fas fa-map-marked"></i>
+                            <span>Destinations : Saint-Louis, Thiès, Kaolack, Ziguinchor</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Devis personnalisé selon destination</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-car-side"></i>
+                            <span>Véhicules adaptés aux longs trajets</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-road"></i>
+                            <span>Chauffeurs expérimentés routes sénégalaises</span>
+                        </div>
+                        <div class="service-feature">
+                            <i class="fas fa-coffee"></i>
+                            <span>Pauses rafraîchissements incluses</span>
+                        </div>
+                    </div>
+                    
+                    <a href="./contact.html" class="service-cta">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TAXI-AIBD</h3>
+                <p>Service de taxi premium entre l'aéroport Blaise Diagne et Dakar, Saly et toute la région.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="./index.html">Accueil</a></li>
+                    <li><a href="./about.html">À Propos</a></li>
+                    <li><a href="./tarifs.html">Nos tarifs</a></li>
+                    <li><a href="./flottes.html">Notre flotte</a></li>
+                    <li><a href="./contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="./services.html">Transfert aéroport</a></li>
+                    <li><a href="./services.html">Transfert Dakar</a></li>
+                    <li><a href="./services.html">Transfert Saly</a></li>
+                    <li><a href="./services.html">Transfert Longue Distance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> (+221) 77 241 87 61</p>
+                    <p><i class="fas fa-envelope"></i> contact@taxi-aibd.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Aéroport Blaise Diagne, Dakar</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 TAXI-AIBD. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Bouton WhatsApp -->
+    <a href="https://wa.me/221772418761" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+<script>
+    // Gestion du menu hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fermer le menu lorsqu'un lien est cliqué
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
+</body>
+</html>
