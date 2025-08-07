@@ -6,449 +6,472 @@
     <title>TAXI-AIBD | Nos Services de Transfert</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-    /* ===================== */
-    /* VARIABLES & BASE STYLE */
-    /* ===================== */
-    :root {
-        --primary-color: #003366;
-        --secondary-color: #E67E22;
-        --accent-color: #F1C40F;
-        --text-color: #333333;
-        --light-gray: #F5F5F5;
-        --white: #FFFFFF;
-        --border-color: #DDDDDD;
-        --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
-        --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
-        --transition: all 0.3s ease;
-    }
+/* ===================== */
+/* VARIABLES & BASE STYLE */
+/* ===================== */
+:root {
+    --primary-color: #003366;
+    --secondary-color: #E67E22;
+    --accent-color: #F1C40F;
+    --text-color: #333333;
+    --light-gray: #F5F5F5;
+    --white: #FFFFFF;
+    --border-color: #DDDDDD;
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+    --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
-    body {
-        background-color: var(--light-gray);
-        color: var(--text-color);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
+body {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    /* ======== */
-    /* HEADER */
-    /* ======== */
-    header {
-        background: var(--white);
-        padding: 15px 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: var(--shadow-sm);
-        position: relative;
-    }
+/* ======== */
+/* HEADER */
+/* ======== */
+header {
+    background: var(--white);
+    padding: clamp(10px, 2vw, 15px) 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
 
-    .logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: var(--primary-color);
-        text-transform: uppercase;
-        z-index: 90;
-    }
+.logo {
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 90;
+    text-decoration: none;
+}
+.logo a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
 
-    /* Navigation */
-    nav {
-        display: flex;
-        align-items: center;
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: clamp(15px, 3vw, 25px);
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(12px, 2vw, 14px);
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 100;
+    margin-left: auto;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px;
+    transition: var(--transition);
+}
+
+/* ================== */
+/* PAGE HERO SECTION */
+/* ================== */
+.page-hero {
+    background: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    padding: clamp(25px, 8vw, 60px) 5%;
+    min-height: clamp(130px, 25vh, 236px);
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
+
+.page-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-hero-title {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: clamp(12px, 3vw, 20px);
+    line-height: 1.2;
+}
+
+.page-hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* =================== */
+/* SECTION SERVICES */
+/* =================== */
+.services-section {
+    padding: clamp(40px, 10vw, 80px) 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: clamp(30px, 6vw, 50px);
+    position: relative;
+    color: var(--primary-color);
+}
+
+.section-title span {
+    color: var(--secondary-color);
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: clamp(60px, 10vw, 80px);
+    height: 3px;
+    background: var(--accent-color);
+    margin: 15px auto 0;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: clamp(20px, 4vw, 30px);
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.service-image {
+    height: clamp(150px, 25vw, 200px);
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-content {
+    padding: clamp(15px, 4vw, 25px);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.service-title {
+    color: var(--primary-color);
+    margin-bottom: clamp(10px, 2vw, 15px);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+
+.service-description {
+    color: #666;
+    margin-bottom: clamp(15px, 3vw, 20px);
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+    line-height: 1.6;
+}
+
+.service-features {
+    margin-bottom: clamp(15px, 3vw, 20px);
+    flex-grow: 1;
+}
+
+.service-feature {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: clamp(8px, 1.5vw, 12px);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+.service-feature i {
+    color: var(--accent-color);
+    margin-right: 10px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.service-price {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: clamp(15px, 3vw, 20px);
+}
+
+.service-cta {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 25px);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+    text-align: center;
+    margin-top: auto;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.service-cta:hover {
+    background: #002244;
+    transform: translateY(-2px);
+}
+
+/* ======== */
+/* FOOTER */
+/* ======== */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: clamp(30px, 6vw, 50px) 5% clamp(20px, 4vw, 30px);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column h3 {
+    color: var(--accent-color);
+    margin-bottom: 5px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+        margin-bottom: 2px;
+
+}
+
+.footer-column ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.footer-column ul li a:hover {
+    color: var(--accent-color);
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: clamp(30px, 6vw, 50px);
+    padding-top: clamp(15px, 3vw, 20px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+/* ================== */
+/* WHATSAPP BUTTON */
+/* ================== */
+.whatsapp-float {
+    position: fixed;
+    width: clamp(50px, 8vw, 60px);
+    height: clamp(50px, 8vw, 60px);
+    bottom: clamp(20px, 5vw, 40px);
+    right: clamp(20px, 5vw, 40px);
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: clamp(20px, 4vw, 30px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+/* ================== */
+/* RESPONSIVE STYLES */
+/* ================== */
+@media (max-width: 946px) {
+     .hamburger {
+        display: block;
     }
 
     nav ul {
-        display: flex;
-        list-style: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 60%;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        padding: 80px 20px 20px;
+        transition: right 0.5s ease-in-out;
+        box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+        z-index: 90;
+    }
+
+    nav ul.active {
+        right: 0;
     }
 
     nav ul li {
-        margin-left: 25px;
+        margin: 15px 0;
     }
 
     nav ul li a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 14px;
-        transition: var(--transition);
+        font-size: clamp(14px, 3vw, 18px);
     }
 
-    nav ul li a:hover {
-        color: var(--secondary-color);
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
     }
 
-    /* Hamburger menu */
-    .hamburger {
-        display: none;
-        cursor: pointer;
-        z-index: 100;
-        margin-left: auto;
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
     }
 
-    .hamburger div {
-        width: 25px;
-        height: 3px;
-        background-color: var(--primary-color);
-        margin: 5px;
-        transition: var(--transition);
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    /* Hero Section */
-    .service-hero {
+    .hero-background {
+        background-position: 70% center;
+    }
+        .page-hero {
         background: var(--primary-color);
         background-size: cover;
         background-position: center;
-        padding: 80px 5%;
+        padding: 25px 5%;
+        height: auto;
+        min-height: 130px;
         text-align: center;
         color: var(--white);
+        position: relative;
     }
 
-    .service-hero h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
+    .page-hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .service-hero p {
-        font-size: 1.2rem;
+    .page-hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    .page-hero-subtitle {
+        font-size: 1rem;
         max-width: 800px;
         margin: 0 auto;
+        line-height: 1.4;
     }
 
-    /* ================== */
-    /* SERVICES SECTION */
-    /* ================== */
     .services-section {
-        padding: 80px 5%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+        padding-top: 15px;
 
-    .section-title {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 50px;
-        position: relative;
-        color: var(--primary-color);
     }
-    
-    .section-title span {
-        color: var(--secondary-color);
-    }
-    
-    .section-title::after {
-        content: "";
-        display: block;
-        width: 80px;
-        height: 3px;
-        background: var(--accent-color);
-        margin: 15px auto 0;
-    }
+}
 
+@media (max-width: 680px) {
     .services-container {
-        display: grid;
-        grid-template-columns: 2fr 2fr;
-        gap: 30px;
+        grid-template-columns: 1fr;
     }
-
-    .service-card {
-        background: var(--white);
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
-        transition: var(--transition);
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-
-    .service-image {
-        height: 200px;
-        overflow: hidden;
-    }
-
-    .service-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-    }
-
-    .service-card:hover .service-image img {
-        transform: scale(1.05);
-    }
-
-    .service-content {
-        padding: 25px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    .service-title {
-        color: var(--primary-color);
-        margin-bottom: 15px;
-        font-size: 1.3rem;
-    }
-
-    .service-description {
-        color: #666;
-        margin-bottom: 20px;
-        font-size: 0.95rem;
-    }
-
-    .service-features {
-        margin-bottom: 20px;
-        flex-grow: 1;
-    }
-
-    .service-feature {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 12px;
-        font-size: 0.9rem;
-    }
-
-    .service-feature i {
-        color: var(--accent-color);
-        margin-right: 10px;
-        margin-top: 3px;
-        flex-shrink: 0;
-    }
-
-    .service-price {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: var(--secondary-color);
-        margin-bottom: 20px;
-    }
-
-    .service-cta {
-        display: inline-block;
-        background: var(--primary-color);
-        color: var(--white);
-        padding: 12px 25px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: var(--transition);
-        text-align: center;
-        margin-top: auto;
-    }
-
-    .service-cta:hover {
-        background: #002244;
-    }
-
-    /* ======== */
-    /* FOOTER */
-    /* ======== */
-    footer {
-        background: var(--primary-color);
-        color: var(--white);
-        padding: 50px 5% 30px;
-    }
-
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-column h3 {
-        color: var(--accent-color);
-        margin-bottom: 20px;
-        font-size: 1.2rem;
-    }
-
-    .footer-column ul {
-        list-style: none;
-    }
-
-    .footer-column ul li {
-        margin-bottom: 10px;
-    }
-
-    .footer-column ul li a {
-        color: var(--white);
-        text-decoration: none;
-        transition: var(--transition);
-    }
-
-    .footer-column ul li a:hover {
-        color: var(--accent-color);
-    }
-
-    .contact-info p {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .social-links a {
-        color: var(--white);
-        font-size: 1.2rem;
-        transition: var(--transition);
-    }
-
-    .social-links a:hover {
-        color: var(--accent-color);
-    }
-
-    .copyright {
-        text-align: center;
-        margin-top: 50px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        color: rgba(255,255,255,0.7);
-        font-size: 0.9rem;
-    }
-
-    /* ================== */
-    /* WHATSAPP BUTTON */
-    /* ================== */
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 40px;
-        right: 40px;
-        background-color: #25D366;
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--transition);
-        text-decoration: none;
-    }
-
-    .whatsapp-float:hover {
-        background-color: #128C7E;
-        transform: scale(1.1);
-    }
-
-    /* ================== */
-    /* RESPONSIVE STYLES */
-    /* ================== */
-    @media (max-width: 992px) {
-        .service-hero {
-            padding: 60px 5%;
-        }
-        
-        .service-hero h1 {
-            font-size: 2.2rem;
-        }
-    }
-
-    @media (max-width: 840px) {
-        /* Hamburger menu */
-        .hamburger {
-            display: block;
-        }
-
-        nav ul {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            height: 100vh;
-            width: 60%;
-            background: var(--white);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            transition: right 0.5s ease-in-out;
-            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
-            z-index: 90;
-        }
-
-        nav ul.active {
-            right: 0;
-        }
-
-        nav ul li {
-            margin: 15px 0;
-        }
-
-        nav ul li a {
-            font-size: 18px;
-        }
-
-        /* Toggle animation */
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .service-hero h1 {
-            font-size: 2rem;
-        }
-
-        .service-hero p {
-            font-size: 1rem;
-        }
-
-        .services-container {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .service-hero h1 {
-            font-size: 1.8rem;
-        }
-        
-        .service-hero {
-            padding: 50px 5%;
-        }
-    }
-
-    @media (max-width: 365px) {
-        nav ul li a {
-            font-size: 12px;
-        }
-    }
+}
 </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">TAXI-AIBD</div>
+        <div class="logo"><a href="./index.html">TAXI-AIBD</a></div>
         
         <!-- Hamburger Menu -->
         <div class="hamburger">
@@ -462,22 +485,23 @@
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li><a href="./about.html">A PROPOS</a></li>
                 <li><a href="./tarifs.html">NOS TARIFS</a></li>
-                <li><a href="./flottes.html">NOTRE FLOTTE</a></li>
+                <li><a href="./flottes.html">NOS VÉHICULES </a></li>
+                <li><a href="./services.html">NOS SERVICES </a></li>
                 <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="service-hero">
-        <h1>Réservation TAXI-AIBD</h1>
-        <p>Notre équipe est disponible 24h/24 pour répondre à vos demandes de réservations</p>
-    </section>
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <h1 class="page-hero-title">Réservation TAXI-AIBD</h1>
+                <p class="page-hero-subtitle">Notre équipe est disponible 24h/24 pour répondre à vos demandes de réservations</p>
+            </div>
+        </section>
 
     <!-- Services Section -->
-<section class="services-section" id="services">
-        <h2 class="section-title">Nos <span>Services</span></h2>
-        
+<section class="services-section" id="services">        
         <div class="services-container">
             <!-- Transfert Aéroport AIBD -->
             <div class="service-card">
@@ -643,9 +667,10 @@
                 <h3>Liens rapides</h3>
                 <ul>
                     <li><a href="./index.html">Accueil</a></li>
-                    <li><a href="./about.html">À Propos</a></li>
+                    <li><a href="./about.html">À propos</a></li>
                     <li><a href="./tarifs.html">Nos tarifs</a></li>
-                    <li><a href="./flottes.html">Notre flotte</a></li>
+                    <li><a href="./flottes.html">Nos véhicules</a></li>
+                    <li><a href="./services.html">Nos services</a></li>
                     <li><a href="./contact.html">Contactez-nous</a></li>
                 </ul>
             </div>

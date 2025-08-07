@@ -6,775 +6,680 @@
     <title>TAXI-AIBD | Transfert Aéroport Blaise Diagne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-    /* ===================== */
-    /* VARIABLES & BASE STYLE */
-    /* ===================== */
-    :root {
-        --primary-color: #003366;
-        --secondary-color: #E67E22;
-        --accent-color: #F1C40F;
-        --text-color: #333333;
-        --light-gray: #F5F5F5;
-        --white: #FFFFFF;
-        --border-color: #DDDDDD;
-        --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
-        --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
-        --transition: all 0.3s ease;
-    }
+/* ===================== */
+/* VARIABLES & BASE STYLE */
+/* ===================== */
+:root {
+    --primary-color: #003366;
+    --secondary-color: #E67E22;
+    --accent-color: #F1C40F;
+    --text-color: #333333;
+    --light-gray: #F5F5F5;
+    --white: #FFFFFF;
+    --border-color: #DDDDDD;
+    --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+    --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
-    body {
-        background-color: var(--light-gray);
-        color: var(--text-color);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
+body {
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    /* ======== */
-    /* HEADER */
-    /* ======== */
-    header {
-        background: var(--white);
-        padding: 15px 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: var(--shadow-sm);
-        position: relative;
-    }
+/* ======== */
+/* HEADER */
+/* ======== */
+header {
+    background: var(--white);
+    padding: clamp(10px, 2vw, 15px) 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
 
-    .logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: var(--primary-color);
-        text-transform: uppercase;
-        z-index: 90;
-    }
+.logo {
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 90;
+    text-decoration: none;
+}
+.logo a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
 
-    /* Navigation */
-    nav {
-        display: flex;
-        align-items: center;
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: clamp(15px, 3vw, 25px);
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: clamp(12px, 2vw, 14px);
+    transition: var(--transition);
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 100;
+    margin-left: auto;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px;
+    transition: var(--transition);
+}
+
+/* ======== */
+/* HERO */
+/* ======== */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(350px, 80vh, 600px);
+    padding: clamp(40px, 10vw, 80px) 5%;
+    color: var(--white);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://plus.unsplash.com/premium_photo-1661537848586-7e99f068e24b');
+    background-size: cover;
+    background-position: center 25%;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 51, 102, 0.9) 0%, rgba(0, 51, 102, 0.6) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    margin-bottom: clamp(15px, 3vw, 20px);
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title span {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+    max-width: 600px;
+    margin: 0 auto clamp(20px, 4vw, 30px);
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+}
+
+/* Hero Features */
+.hero-features {
+    display: flex;
+    gap: clamp(10px, 2vw, 15px);
+    flex-wrap: wrap;
+    margin-bottom: clamp(20px, 4vw, 30px);
+    justify-content: center;
+}
+
+.feature-item {
+    background: rgba(255,255,255,0.1);
+    padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 15px);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+}
+
+.feature-item i {
+    color: var(--accent-color);
+}
+
+/* Hero CTA */
+.hero-cta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: clamp(12px, 2vw, 15px) clamp(20px, 4vw, 30px);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+    display: inline-block;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.btn-primary:hover {
+    background: #D35400;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: clamp(12px, 2vw, 15px) clamp(20px, 3vw, 25px);
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid rgba(255,255,255,0.3);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--accent-color);
+}
+
+/* ================== */
+/* RESERVATION SYSTEM */
+/* ================== */
+.reservation {
+    padding: clamp(30px, 8vw, 50px) 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.reservation-header {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: clamp(15px, 4vw, 25px);
+    text-align: center;
+}
+
+.reservation-header h1 {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: clamp(0.7rem, 2vw, 1.1rem);
+    color: var(--accent-color);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: var(--primary-color);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: clamp(8px, 2vw, 15px);
+    background: transparent;
+    color: var(--white);
+    border: none;
+    font-size: clamp(11px, 2vw, 1rem);
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.tab-btn.active {
+    background: var(--accent-color);
+    color: var(--text-color);
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255,255,255,0.1);
+}
+
+.tab-content {
+    display: none;
+    padding: clamp(15px, 4vw, 30px);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Routes */
+.route {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    padding: clamp(15px, 3vw, 20px);
+    border-bottom: 1px solid var(--border-color);
+    gap: 15px;
+}
+
+.route:last-child {
+    border-bottom: none;
+}
+
+.route:hover {
+    background-color: var(--light-gray);
+}
+
+.route-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.route-info p {
+    color: #666;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+.price {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.btn-reserve {
+    background: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    white-space: nowrap;
+}
+
+.btn-reserve:hover {
+    background: #D35400;
+    transform: scale(1.02);
+}
+
+/* Vehicles */
+.vehicles {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vehicle {
+    border: 1px solid var(--border-color);
+    padding: clamp(6px, 1.5vw, 10px) clamp(8px, 2vw, 15px);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: clamp(12px, 1.5vw, 0.9rem);
+    text-align: center;
+    min-width: clamp(80px, 15vw, 120px);
+}
+
+.vehicle.selected {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.vehicle-price {
+    font-size: clamp(11px, 1.4vw, 0.9rem);
+    color: var(--secondary-color);
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.note {
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    color: #666;
+}
+
+/* Section Services */
+.styled-services {
+    background: var(--light-gray);
+    color: var(--text-color);
+    padding: clamp(30px, 8vw, 60px) 5%;
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.styled-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: clamp(30px, 6vw, 50px);
+    margin-top: clamp(30px, 6vw, 50px);
+    position: relative;
+    color: var(--primary-color);
+    padding: 0 clamp(10px, 2vw, 15px);
+}
+
+.styled-title span {
+    color: var(--secondary-color);
+}
+
+.styled-title::after {
+    content: "";
+    display: block;
+    width: clamp(60px, 10vw, 80px);
+    height: 3px;
+    background: var(--accent-color);
+    margin: 15px auto 0;
+}
+
+.styled-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 25vw, 180px), 1fr));
+    gap: clamp(15px, 3vw, 20px);
+    max-width: 1054px;
+    margin: clamp(20px, 5vw, 40px) auto;
+    padding: 0 20px;
+}
+
+.styled-card {
+    background: var(--white);
+    padding: clamp(15px, 3vw, 20px) clamp(10px, 2vw, 15px);
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid transparent;
+}
+
+.styled-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-top-color: var(--accent-color);
+}
+
+.card-icon {
+    width: clamp(50px, 10vw, 70px);
+    height: clamp(50px, 10vw, 70px);
+    margin: 0 auto clamp(15px, 3vw, 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color), #002244);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.styled-card h4 {
+    color: var(--primary-color);
+    margin-bottom: clamp(10px, 2vw, 15px);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.styled-card p {
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    line-height: 1.6;
+}
+
+.styled-card strong {
+    color: var(--secondary-color);
+}
+
+/* ======== */
+/* FOOTER */
+/* ======== */
+footer {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: clamp(30px, 6vw, 50px) 5% clamp(20px, 4vw, 30px);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column h3 {
+    color: var(--accent-color);
+    margin-bottom: 5px;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 2px;
+}
+
+.footer-column ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.footer-column ul li a:hover {
+    color: var(--accent-color);
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: clamp(30px, 6vw, 50px);
+    padding-top: clamp(15px, 3vw, 20px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+}
+
+/* ================== */
+/* WHATSAPP BUTTON */
+/* ================== */
+.whatsapp-float {
+    position: fixed;
+    width: clamp(50px, 8vw, 60px);
+    height: clamp(50px, 8vw, 60px);
+    bottom: clamp(20px, 5vw, 40px);
+    right: clamp(20px, 5vw, 40px);
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: clamp(20px, 4vw, 30px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1);
+}
+
+/* ================== */
+/* RESPONSIVE STYLES */
+/* ================== */
+@media (max-width: 946px) {
+    .hamburger {
+        display: block;
     }
 
     nav ul {
-        display: flex;
-        list-style: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 60%;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        padding: 80px 20px 20px;
+        transition: right 0.5s ease-in-out;
+        box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+        z-index: 90;
+    }
+
+    nav ul.active {
+        right: 0;
     }
 
     nav ul li {
-        margin-left: 25px;
+        margin: 15px 0;
     }
 
     nav ul li a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 14px;
-        transition: var(--transition);
+        font-size: clamp(14px, 3vw, 18px);
     }
 
-    nav ul li a:hover {
-        color: var(--secondary-color);
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
     }
 
-    /* Hamburger menu */
-    .hamburger {
-        display: none;
-        cursor: pointer;
-        z-index: 100;
-        margin-left: auto;
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
     }
 
-    .hamburger div {
-        width: 25px;
-        height: 3px;
-        background-color: var(--primary-color);
-        margin: 5px;
-        transition: var(--transition);
-    }
-
-    /* ======== */
-    /* HERO */
-    /* ======== */
-    .hero {
-        --hero-min-height: 600px;
-        --overlay-opacity: 0.9;
-        position: relative;
-        display: flex;
-        align-items: center;
-        min-height: var(--hero-min-height);
-        padding: 80px 5%;
-        color: var(--white);
-        overflow: hidden;
-        background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 
     .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://plus.unsplash.com/premium_photo-1661537848586-7e99f068e24b');
-        background-size: cover;
-        background-position: center 25%;
-        background-repeat: no-repeat;
-        z-index: 1;
+        background-position: 70% center;
     }
+}
 
-    .hero-background::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-            90deg, 
-            rgba(0, 51, 102, var(--overlay-opacity)) 0%, 
-            rgba(0, 51, 102, calc(var(--overlay-opacity) * 0.6)) 100%
-        );
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 0;
-    }
-
-    .hero-title {
-        font-size: clamp(2rem, 5vw, 3rem);
-        margin-bottom: 20px;
-        line-height: 1.2;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-title span {
-        color: var(--accent-color);
-        font-weight: 700;
-    }
-
-    .hero-subtitle {
-        font-size: clamp(1rem, 2vw, 1.3rem);
-        max-width: 600px;
-        margin-bottom: 30px;
-        line-height: 1.5;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        opacity: 0.95;
-
-    }
-
-    /* Hero Features */
-    .hero-features {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-        margin-bottom: 30px;
-    }
-
-    .feature-item {
-        background: rgba(255,255,255,0.1);
-        padding: 10px 15px;
-        border-radius: 30px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.95rem;
-    }
-
-    .feature-item i {
-        color: var(--accent-color);
-    }
-
-    /* Hero CTA */
-    .hero-cta {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .btn-primary {
-        background: var(--secondary-color);
-        color: var(--white);
-        padding: 15px 30px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: var(--transition);
-        display: inline-block;
-    }
-
-    .btn-primary:hover {
-        background: #D35400;
-        transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-        background: transparent;
-        color: var(--white);
-        padding: 15px 25px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: var(--transition);
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        border: 2px solid rgba(255,255,255,0.3);
-    }
-
-    .btn-secondary:hover {
-        background: rgba(255,255,255,0.1);
-        border-color: var(--accent-color);
-    }
-
-    /* ================== */
-    /* RESERVATION SYSTEM */
-    /* ================== */
-    .reservation {
-        padding: 50px 5%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .container {
-        background: var(--white);
-        border-radius: 8px;
-        box-shadow: var(--shadow-md);
-        overflow: hidden;
-    }
-
-    .reservation-header {
-        background: var(--primary-color);
-        color: var(--white);
-        padding: 25px;
-        text-align: center;
-    }
-
-    .reservation-header h1 {
-        font-size: 2rem;
-        margin-bottom: 10px;
-    }
-
-    .subtitle {
-        font-size: 1.1rem;
-        color: var(--accent-color);
-    }
-
-    /* Tabs */
-    .tabs {
-        display: flex;
-        background: var(--primary-color);
-    }
-
-    .tab-btn {
-        flex: 1;
-        padding: 15px;
-        background: transparent;
-        color: var(--white);
-        border: none;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: var(--transition);
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-
-    .tab-btn.active {
-        background: var(--accent-color);
-        color: var(--text-color);
-    }
-
-    .tab-btn:hover:not(.active) {
-        background: rgba(255,255,255,0.1);
-    }
-
-    .tab-content {
-        display: none;
-        padding: 30px;
-    }
-
-    .tab-content.active {
-        display: block;
-    }
-
-    /* Routes */
+@media (max-width: 768px) {
     .route {
-        display: grid;
-        grid-template-columns: 1fr auto auto;
-        align-items: center;
-        padding: 20px;
-        border-bottom: 1px solid var(--border-color);
-        gap: 15px;
-    }
-
-    .route:last-child {
-        border-bottom: none;
-    }
-
-    .route:hover {
-        background-color: var(--light-gray);
-    }
-
-    .route-info h3 {
-        color: var(--primary-color);
-        margin-bottom: 5px;
-    }
-
-    .route-info p {
-        color: #666;
-        font-size: 0.9rem;
-    }
-
-    .price {
-        font-size: 1.3rem;
-        font-weight: bold;
-        color: var(--secondary-color);
+        grid-template-columns: 1fr;
         text-align: center;
-    }
-
-    .btn-reserve {
-        background: var(--secondary-color);
-        color: var(--white);
-        border: none;
-        padding: 12px 25px;
-        border-radius: 4px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: var(--transition);
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        white-space: nowrap;
-    }
-
-    .btn-reserve:hover {
-        background: #D35400;
-        transform: scale(1.02);
-    }
-
-    /* Vehicles */
-    .vehicles {
-        display: flex;
-        gap: 15px;
-        margin-top: 15px;
-        flex-wrap: wrap;
-    }
-
-    .vehicle {
-        border: 1px solid var(--border-color);
-        padding: 10px 15px;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: var(--transition);
-        font-size: 0.9rem;
-        text-align: center;
-        min-width: 120px;
-    }
-
-    .vehicle.selected {
-        background: var(--primary-color);
-        color: var(--white);
-        border-color: var(--primary-color);
-    }
-
-    .vehicle-price {
-        font-size: 0.9rem;
-        color: var(--secondary-color);
-        margin-top: 5px;
-        font-weight: bold;
-    }
-
-    .note {
-        margin-top: 30px;
-        padding: 15px;
-        background: var(--light-gray);
-        border-radius: 4px;
-        font-size: 0.9rem;
-        color: #666;
-    }
-
-    /* Section Services */
-    .styled-services {
-        background: var(--light-gray);
-        color: var(--text-color);
-        padding: 60px 5%;
-        position: relative;
-        overflow: hidden;
-                padding: 50px 5%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .styled-title {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 50px;
-        margin-top: 50px;
-        position: relative;
-        color: var(--primary-color);
-    }
-    
-    .styled-title span {
-        color: var(--secondary-color);
-    }
-    
-    .styled-title::after {
-        content: "";
-        display: block;
-        width: 80px;
-        height: 3px;
-        background: var(--accent-color);
-        margin: 15px auto 0;
-    }
-    
-    .styled-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 20px;
-        max-width: 1054px;
-        margin: 40px auto;
-        padding: 0 20px;
-    }
-    
-    .styled-card {
-        background: var(--white);
-        padding: 20px 15px;
-        border-radius: 10px;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        border-top: 4px solid transparent;
-    }
-    
-    .styled-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        border-top-color: var(--accent-color);
-    }
-    
-    .card-icon {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, var(--primary-color), #002244);
-        color: var(--white);
-        border-radius: 50%;
-        font-size: 1.5rem;
-    }
-    
-    .styled-card h4 {
-        color: var(--primary-color);
-        margin-bottom: 15px;
-        font-size: 1.2rem;
-    }
-    
-    .styled-card p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-    
-    .styled-card strong {
-        color: var(--secondary-color);
-    }
-
-    /* ======== */
-    /* FOOTER */
-    /* ======== */
-    footer {
-        background: var(--primary-color);
-        color: var(--white);
-        padding: 50px 5% 30px;
-    }
-
-    .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .footer-column h3 {
-        color: var(--accent-color);
-        margin-bottom: 20px;
-        font-size: 1.2rem;
-    }
-
-    .footer-column ul {
-        list-style: none;
-    }
-
-    .footer-column ul li {
-        margin-bottom: 10px;
-    }
-
-    .footer-column ul li a {
-        color: var(--white);
-        text-decoration: none;
-        transition: var(--transition);
-    }
-
-    .footer-column ul li a:hover {
-        color: var(--accent-color);
-    }
-
-    .contact-info p {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
         gap: 10px;
     }
 
-    .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .social-links a {
-        color: var(--white);
-        font-size: 1.2rem;
-        transition: var(--transition);
-    }
-
-    .social-links a:hover {
-        color: var(--accent-color);
-    }
-
-    .copyright {
+    .btn-primary, .btn-secondary {
+        width: 100%;
         text-align: center;
-        margin-top: 50px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        color: rgba(255,255,255,0.7);
-        font-size: 0.9rem;
-    }
-
-    /* ================== */
-    /* WHATSAPP BUTTON */
-    /* ================== */
-    .whatsapp-float {
-        position: fixed;
-        width: 60px;
-        height: 60px;
-        bottom: 40px;
-        right: 40px;
-        background-color: #25D366;
-        color: #FFF;
-        border-radius: 50px;
-        text-align: center;
-        font-size: 30px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 100;
-        display: flex;
-        align-items: center;
         justify-content: center;
-        transition: var(--transition);
-        text-decoration: none;
     }
+}
 
-    .whatsapp-float:hover {
-        background-color: #128C7E;
-        transform: scale(1.1);
+@media (max-width: 480px) {
+    .hero-cta {
+        flex-direction: column;
+        gap: 10px;
     }
-
-    /* ================== */
-    /* RESPONSIVE STYLES */
-    /* ================== */
-    @media (max-width: 992px) {
-        .hero {
-            --hero-min-height: 450px;
-            /* --overlay-opacity: 0.7; */
-            flex-direction: column;
-            text-align: center;
-        }
-        .hero-subtitle {
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin: auto;
-        }
-
-        
-        .hero-content {
-            max-width: 100%;
-            margin-bottom: 30px;
-        }
-        
-        .hero-background {
-            background-position: 70% center;
-        }
-        
-        .hero-features, .hero-cta {
-            justify-content: center;
-        }
-        
-        .styled-grid {
-            grid-template-columns: 1fr 1fr;
-        }
+    
+    .styled-grid {
+        grid-template-columns: 1fr;
     }
-        @media (max-width: 840px) {
-        /* Hamburger menu */
-        .hamburger {
-            display: block;
-        }
-
-        nav ul {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            height: 100vh;
-            width: 60%;
-            background: var(--white);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            transition: right 0.5s ease-in-out;
-            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
-            z-index: 90;
-        }
-
-        nav ul.active {
-            right: 0;
-        }
-
-        nav ul li {
-            margin: 15px 0;
-        }
-
-        nav ul li a {
-            font-size: 18px;
-        }
-
-        /* Toggle animation */
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    }
-
-    @media (max-width: 768px) {
-        /* Hero */
-        .hero {
-            --hero-min-height: 400px;
-            padding: 60px 5%;
-        }
-        
-        .hero-title {
-            font-size: 2rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-
-        /* Reservation */
-        .route {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 10px;
-        }
-
-        .price {
-            margin: 10px 0;
-        }
-
-        .vehicles {
-            justify-content: center;
-        }
-        .styled-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-
-    }
-
-    @media (max-width: 500px) {
-        .styled-grid h4{
-            font-size: 1rem;
-        }
-        .styled-card {
-            padding: 15px 5px;
-        }
-        .styled-title{
-            padding: 15px 15px;
-        }
-    }
-    @media (max-width: 480px) {
-        .hero {
-            --hero-min-height: 350px;
-        }
-        
-        .hero-title {
-            font-size: 1.8rem;
-        }
-        
-        .hero-cta {
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .btn-primary, .btn-secondary {
-            width: 100%;
-            text-align: center;
-            justify-content: center;
-        }
-
-        .tab-btn {
-            padding: 10px 5px;
-            font-size: 12px;
-        }
-
-        nav ul li a {
-            font-size: 16px;
-        }
-        .styled-grid {
-            grid-template-columns: 1fr;
-        }
-    }
-    @media (max-width: 429px) {
-        .tabs .tab-btn {
-            font-size: 11px;
-        }
-        
-        .reservation .tab-content .vehicles .vehicle {
-            font-size: 12px;
-            min-width: 100px;
-            padding: 8px 5px;
-        }
-    }
-     @media (max-width: 365px) {
-             nav ul li a {
-                font-size: 12px;
-            }
-    }
+}
 </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="logo">TAXI-AIBD</div>
+        <div class="logo"><a href="./index.html">TAXI-AIBD</a></div>
         
         <!-- Hamburger Menu -->
         <div class="hamburger">
@@ -788,7 +693,8 @@
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li><a href="./about.html">A PROPOS</a></li>
                 <li><a href="./tarifs.html">NOS TARIFS</a></li>
-                <li><a href="./flottes.html">NOTRE FLOTTE</a></li>
+                <li><a href="./flottes.html">NOS VÉHICULES </a></li>
+                <li><a href="./services.html">NOS SERVICES </a></li>
                 <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>
@@ -853,10 +759,10 @@
                                 <div>Berline standard</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 3-4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 2-3
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
@@ -881,7 +787,7 @@
                                 <div>Berline Premium</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
                                         <i class="fas fa-suitcase"></i> 4
@@ -898,7 +804,7 @@
                                         <i class="fas fa-users"></i> 8
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 6-8
+                                        <i class="fas fa-suitcase"></i> 6
                                     </span>
                                 </div>
                                 <div class="vehicle-price">55 000 FCFA</div>
@@ -919,10 +825,10 @@
                                 <div>Berline standard</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 3-4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 2-3
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
@@ -947,10 +853,10 @@
                                 <div>Berline Premium</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 4
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">50 000 FCFA</div>
@@ -964,7 +870,7 @@
                                         <i class="fas fa-users"></i> 8
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 6-8
+                                        <i class="fas fa-suitcase"></i> 6
                                     </span>
                                 </div>
                                 <div class="vehicle-price">55 000 FCFA</div>
@@ -992,10 +898,10 @@
                                 <div>Berline standard</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 3-4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 2-3
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
@@ -1020,10 +926,10 @@
                                 <div>Berline Premium</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 4
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">50 000 FCFA</div>
@@ -1037,7 +943,7 @@
                                         <i class="fas fa-users"></i> 8
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 6-8
+                                        <i class="fas fa-suitcase"></i> 6
                                     </span>
                                 </div>
                                 <div class="vehicle-price">55 000 FCFA</div>
@@ -1058,10 +964,10 @@
                                 <div>Berline standard</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 3-4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 2-3
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
@@ -1086,10 +992,10 @@
                                 <div>Berline Premium</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 4
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">50 000 FCFA</div>
@@ -1103,7 +1009,7 @@
                                         <i class="fas fa-users"></i> 8
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 6-8
+                                        <i class="fas fa-suitcase"></i> 6
                                     </span>
                                 </div>
                                 <div class="vehicle-price">55 000 FCFA</div>
@@ -1131,10 +1037,10 @@
                                 <div>Berline standard</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 3-4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 2-3
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
@@ -1159,10 +1065,10 @@
                                 <div>Berline Premium</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 4
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">50 000 FCFA</div>
@@ -1176,7 +1082,7 @@
                                         <i class="fas fa-users"></i> 8
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 6-8
+                                        <i class="fas fa-suitcase"></i> 6
                                     </span>
                                 </div>
                                 <div class="vehicle-price">55 000 FCFA</div>
@@ -1197,10 +1103,10 @@
                                 <div>Berline standard</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 3-4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 2-3
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">35 000 FCFA</div>
@@ -1225,10 +1131,10 @@
                                 <div>Berline Premium</div>
                                 <div class="vehicle-details">
                                     <span title="Passagers">
-                                        <i class="fas fa-users"></i> 4
+                                        <i class="fas fa-users"></i> 3
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 4
+                                        <i class="fas fa-suitcase"></i> 2
                                     </span>
                                 </div>
                                 <div class="vehicle-price">50 000 FCFA</div>
@@ -1242,7 +1148,7 @@
                                         <i class="fas fa-users"></i> 8
                                     </span>
                                     <span title="Bagages">
-                                        <i class="fas fa-suitcase"></i> 6-8
+                                        <i class="fas fa-suitcase"></i> 6
                                     </span>
                                 </div>
                                 <div class="vehicle-price">55 000 FCFA</div>
@@ -1255,47 +1161,6 @@
                 
                 <div class="note">
                     <p>⚠️ <strong>Trajets longue distance</strong> - Contactez-nous pour les réservations aller-retour</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Services Compacte -->
-    <section class="styled-services">
-        <div class="container">
-            <h3 class="styled-title">Nos <span>Services Exclusifs</span></h3>
-            
-            <div class="styled-grid">
-                <div class="styled-card">
-                    <div class="card-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h4>Disponibilité 24/7</h4>
-                    <p>Service continu jour et nuit <strong>+5000 FCFA (21h-6h)</strong></p>
-                </div>
-                
-                <div class="styled-card">
-                    <div class="card-icon">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h4>Flotte Variée</h4>
-                    <p>Berlines confortables, SUV spacieux et minibus pour groupes</p>
-                </div>
-                
-                <div class="styled-card">
-                    <div class="card-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h4>Chauffeurs Experts</h4>
-                    <p>Professionnels formés et ponctuels</p>
-                </div>
-                
-                <div class="styled-card">
-                    <div class="card-icon">
-                        <i class="fas fa-hand-holding-usd"></i>
-                    </div>
-                    <h4>Tarification Claire</h4>
-                    <p>Prix fixes sans surprise, payement sécurisé</p>
                 </div>
             </div>
         </div>
@@ -1319,9 +1184,10 @@
                 <h3>Liens rapides</h3>
                 <ul>
                     <li><a href="./index.html">Accueil</a></li>
-                    <li><a href="./about.html">À Propos</a></li>
+                    <li><a href="./about.html">À propos</a></li>
                     <li><a href="./tarifs.html">Nos tarifs</a></li>
-                    <li><a href="./flottes.html">Notre flotte</a></li>
+                    <li><a href="./flottes.html">Nos véhicules</a></li>
+                    <li><a href="./services.html">Nos services</a></li>
                     <li><a href="./contact.html">Contactez-nous</a></li>
                 </ul>
             </div>
@@ -1405,11 +1271,22 @@
             const price = selectedVehicle.getAttribute('data-price');
             const vehicleType = selectedVehicle.textContent.trim().split('\n')[0];
             
+            // Récupérer les informations passagers et bagages depuis les spans avec icônes
+            const vehicleDetails = selectedVehicle.querySelector('.vehicle-details');
+            const passagersSpan = vehicleDetails.querySelector('span[title="Passagers"]');
+            const bagagesSpan = vehicleDetails.querySelector('span[title="Bagages"]');
+            
+            // Extraire les nombres depuis le texte (exemple: "8" ou "6-8")
+            const passagersText = passagersSpan ? passagersSpan.textContent.trim().replace(/.*\s/, '') : '4';
+            const bagagesText = bagagesSpan ? bagagesSpan.textContent.trim().replace(/.*\s/, '') : '3';
+            
             // Construction de l'URL avec les paramètres
             const params = new URLSearchParams();
             params.append('trajet', routeName);
             params.append('vehicule', vehicleType);
             params.append('prix', price);
+            params.append('passagers', passagersText); 
+            params.append('bagages', bagagesText);
             
             // Redirection vers la page de contact avec les paramètres
             window.location.href = 'reservation.html?' + params.toString();

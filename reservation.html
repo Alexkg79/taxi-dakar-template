@@ -6,7 +6,9 @@
     <title>Réservation | TAXI-AIBD - Transfert Aéroport Blaise Diagne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Styles de base identiques à votre page d'accueil */
+        /* ===================== */
+        /* VARIABLES & BASE STYLE */
+        /* ===================== */
         :root {
             --primary-color: #003366;
             --secondary-color: #E67E22;
@@ -15,6 +17,9 @@
             --light-gray: #F5F5F5;
             --white: #FFFFFF;
             --border-color: #DDDDDD;
+            --shadow-sm: 0 2px 5px rgba(0,0,0,0.1);
+            --shadow-md: 0 3px 10px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -41,26 +46,33 @@
             overflow-x: hidden;
         }
 
-        /* Header avec menu hamburger */
+        /* ======== */
+        /* HEADER */
+        /* ======== */
         header {
             background: var(--white);
-            padding: 15px 5%;
+            padding: clamp(10px, 2vw, 15px) 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
             position: relative;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             font-weight: bold;
-            color: var(--primary-color);
             text-transform: uppercase;
             z-index: 90;
+            text-decoration: none;
         }
 
-        /* Navigation styles */
+        .logo a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* Navigation */
         nav {
             display: flex;
             align-items: center;
@@ -72,7 +84,7 @@
         }
 
         nav ul li {
-            margin-left: 25px;
+            margin-left: clamp(15px, 3vw, 25px);
         }
 
         nav ul li a {
@@ -80,20 +92,20 @@
             text-decoration: none;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 14px;
-            transition: color 0.3s;
+            font-size: clamp(12px, 2vw, 14px);
+            transition: var(--transition);
         }
 
         nav ul li a:hover {
             color: var(--secondary-color);
         }
 
-        /* Hamburger menu styles */
+        /* Hamburger menu */
         .hamburger {
             display: none;
             cursor: pointer;
             z-index: 100;
-            margin-left: auto; /* Aligné à droite */
+            margin-left: auto;
         }
 
         .hamburger div {
@@ -101,54 +113,67 @@
             height: 3px;
             background-color: var(--primary-color);
             margin: 5px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
-        /* Hero Section */
-        .reservation-hero {
+        /* ================== */
+        /* PAGE HERO SECTION */
+        /* ================== */
+        .page-hero {
             background: var(--primary-color);
             background-size: cover;
             background-position: center;
-            padding: 60px 5%;
+            padding: clamp(25px, 8vw, 60px) 5%;
+            min-height: clamp(130px, 25vh, 236px);
             text-align: center;
             color: var(--white);
+            position: relative;
         }
 
-        .reservation-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .reservation-hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
+        .page-hero-content {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Contenu Contact */
+        .page-hero-title {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: clamp(12px, 3vw, 20px);
+            line-height: 1.2;
+        }
+
+        .page-hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* =================== */
+        /* CONTENU RÉSERVATION */
+        /* =================== */
         .reservation-container {
             max-width: 1200px;
-            margin: 50px auto;
+            margin: clamp(15px, 4vw, 25px) auto;
             padding: 0 5%;
         }
 
         .reservation-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: clamp(20px, 4vw, 30px);
         }
 
         .contact-info, .reservation-form {
             background: var(--white);
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            padding: 40px;
+            box-shadow: var(--shadow-md);
+            padding: clamp(25px, 5vw, 40px);
         }
 
         .section-title {
             color: var(--primary-color);
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            margin-bottom: clamp(20px, 4vw, 30px);
+            font-size: clamp(0.9rem, 4vw, 1.8rem);
             position: relative;
             padding-bottom: 10px;
         }
@@ -158,40 +183,43 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 60px;
+            width: clamp(40px, 8vw, 60px);
             height: 3px;
             background: var(--secondary-color);
         }
 
+        /* =================== */
+        /* INFORMATIONS CONTACT */
+        /* =================== */
         .info-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: clamp(10px, 2vw, 15px);
+            margin-bottom: clamp(20px, 4vw, 25px);
         }
 
         .info-icon {
-            width: 50px;
-            height: 50px;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
             background: var(--accent-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--primary-color);
             flex-shrink: 0;
         }
 
         .info-content h3 {
             color: var(--primary-color);
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             margin-bottom: 5px;
         }
 
         .info-content p, .info-content a {
             color: var(--text-color);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
             line-height: 1.6;
         }
 
@@ -205,22 +233,36 @@
             text-decoration: underline;
         }
 
-        /* Formulaire */
+        /* ================= */
+        /* FORMULAIRE RÉSERVATION */
+        /* ================= */
+        .reservation-form p {
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+            margin-bottom: clamp(15px, 3vw, 20px);
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: clamp(15px, 3vw, 20px);
         }
 
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: clamp(10px, 2vw, 15px);
+        }
+
+        .form-row-triple {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: clamp(10px, 2vw, 15px);
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: clamp(5px, 1vw, 8px);
             font-weight: 600;
             color: var(--primary-color);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .required {
@@ -229,11 +271,11 @@
 
         input, textarea, select {
             width: 100%;
-            padding: 12px 15px;
+            padding: clamp(10px, 2vw, 12px) clamp(12px, 2vw, 15px);
             border: 1px solid var(--border-color);
             border-radius: 4px;
-            font-size: 1rem;
-            transition: all 0.3s;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            transition: var(--transition);
         }
 
         input:focus, textarea:focus, select:focus {
@@ -242,25 +284,30 @@
             box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
         }
 
+        .readonly-field {
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+
         textarea {
-            min-height: 150px;
+            min-height: clamp(100px, 15vw, 120px);
             resize: vertical;
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: clamp(8px, 2vw, 15px) clamp(25px, 4vw, 30px);
             background: var(--secondary-color);
             color: var(--white);
             border: none;
             border-radius: 4px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             text-align: center;
             width: 100%;
-            margin-top: 10px;
+            margin-top: clamp(8px, 1.5vw, 10px);
             text-transform: uppercase;
         }
 
@@ -271,37 +318,95 @@
 
         .whatsapp-btn {
             background: #25D366;
+            margin-top: clamp(8px, 1.5vw, 10px);
         }
 
         .whatsapp-btn:hover {
             background: #128C7E;
         }
 
-        /* Résumé réservation */
+        /* ================== */
+        /* RÉSUMÉ RÉSERVATION */
+        /* ================== */
         .reservation-summary {
             background: rgba(241, 196, 15, 0.2);
             border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            margin-bottom: 25px;
+            padding: clamp(12px, 2vw, 15px);
+            margin-bottom: clamp(20px, 4vw, 25px);
             border-radius: 0 4px 4px 0;
         }
 
         .reservation-summary h3 {
             color: var(--primary-color);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            margin-bottom: clamp(8px, 1.5vw, 10px);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
 
         .reservation-summary p {
             margin-bottom: 5px;
             font-weight: 500;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
-        /* Footer identique */
+        /* ================== */
+        /* BOUTON DÉPLIANT MOBILE */
+        /* ================== */
+        .toggle-coordonnees {
+            display: none;
+            background: var(--secondary-color);
+            color: white;
+            padding: clamp(8px, 2vw, 15px);
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: clamp(8px, 1.5vw, 10px);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+
+        .toggle-coordonnees i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-coordonnees.active i {
+            transform: rotate(180deg);
+        }
+
+        /* ================== */
+        /* PAIEMENT SÉCURISÉ */
+        /* ================== */
+        .info-paiement {
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(8px, 1.5vw, 10px);
+            background-color: #f9f9f9;
+            padding: clamp(10px, 2vw, 12px) clamp(12px, 2vw, 16px);
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            color: #333;
+            margin-bottom: clamp(12px, 2vw, 15px);
+        }
+
+        .info-paiement i {
+            color: #4CAF50;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .texte-paiement {
+            line-height: 1.4;
+        }
+
+        /* ======== */
+        /* FOOTER */
+        /* ======== */
         footer {
             background: var(--primary-color);
             color: var(--white);
-            padding: 50px 5% 30px;
+            padding: clamp(30px, 6vw, 50px) 5% clamp(20px, 4vw, 30px);
         }
 
         .footer-content {
@@ -314,8 +419,8 @@
 
         .footer-column h3 {
             color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+            margin-bottom: clamp(5px, 2vw, 10px);
+            font-size: clamp(1rem, 2vw, 1.2rem);
         }
 
         .footer-column ul {
@@ -323,13 +428,14 @@
         }
 
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: clamp(2px, 1vw, 5px);
         }
 
         .footer-column ul li a {
             color: var(--white);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .footer-column ul li a:hover {
@@ -341,6 +447,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .social-links {
@@ -351,8 +458,8 @@
 
         .social-links a {
             color: var(--white);
-            font-size: 1.2rem;
-            transition: color 0.3s;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            transition: var(--transition);
         }
 
         .social-links a:hover {
@@ -361,31 +468,33 @@
 
         .copyright {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
+            margin-top: clamp(30px, 6vw, 50px);
+            padding-top: clamp(15px, 3vw, 20px);
             border-top: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
         }
 
-        /* Bouton WhatsApp flottant */
+        /* ================== */
+        /* WHATSAPP BUTTON */
+        /* ================== */
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
+            width: clamp(50px, 8vw, 60px);
+            height: clamp(50px, 8vw, 60px);
+            bottom: clamp(20px, 5vw, 40px);
+            right: clamp(20px, 5vw, 40px);
             background-color: #25D366;
             color: #FFF;
             border-radius: 50px;
             text-align: center;
-            font-size: 30px;
+            font-size: clamp(20px, 4vw, 30px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             text-decoration: none;
         }
 
@@ -394,84 +503,15 @@
             transform: scale(1.1);
         }
 
-        /* Styles pour le bouton dépliant sur mobile */
-        .toggle-coordonnees {
-            display: none; /* Caché par défaut */
-            background: var(--secondary-color);
-            color: white;
-            padding: 15px;
-            border-radius: 4px;
-            text-align: center;
-            margin-bottom: 15px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .toggle-coordonnees i {
-            margin-left: 10px;
-            transition: transform 0.3s;
-        }
-
-        /* paiement secu */
-        .choix-paiement {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 12px;
-        }
-
-        .btn-paiement {
-        flex: 1;
-        padding: 10px;
-        background-color: #e0e0e0;
-        border: none;
-        border-radius: 6px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.2s;
-        }
-
-        .btn-paiement:hover {
-        background-color: #d5d5d5;
-        }
-
-        .btn-paiement.actif {
-        background-color: #4CAF50;
-        color: white;
-        }
-
-        .info-paiement {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        background-color: #f9f9f9;
-        padding: 12px 16px;
-        border-radius: 8px;
-        border-left: 4px solid #4CAF50;
-        font-size: 0.9rem;
-        color: #333;
-        }
-
-        .info-paiement i {
-        color: #4CAF50;
-        font-size: 1.3rem;
-        margin-top: 4px;
-        }
-
-        .texte-paiement {
-        line-height: 1.4;
-        }
-
-        /* Responsive */
-        @media (max-width: 1050px) {
-            .reservation-form #reservationForm {       
-                font-size: 14px;
-            }
-        }
-
+        /* ================== */
+        /* RESPONSIVE STYLES */
+        /* ================== */
         @media (max-width: 950px) {
             .reservation-grid {
                 grid-template-columns: 1fr;
+                gap: clamp(8px, 2vw, 10px);
             }
+
             .toggle-coordonnees {
                 display: block;
             }
@@ -480,106 +520,105 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.5s ease-out, padding 0.2s ease-out;
-                padding: 0 25px;
+                padding: 0 clamp(20px, 4vw, 25px);
             }
 
             .contact-info.visible {
                 max-height: 1000px;
-                padding: 25px;
+                padding: clamp(20px, 4vw, 25px);
                 transition: max-height 0.5s ease-out, padding 0.2s ease-out;
             }
-
-            .toggle-coordonnees .fa-chevron-down {
-                transform: rotate(0deg);
-                transition: transform 0.3s ease;
-            }
-
-            .toggle-coordonnees.active .fa-chevron-down {
-                transform: rotate(180deg);
-            }
-        }
-        @media (max-width: 840px) {
-        /* Hamburger menu */
-        .hamburger {
-            display: block;
         }
 
-        nav ul {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            height: 100vh;
-            width: 60%;
-            background: var(--white);
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            transition: right 0.5s ease-in-out;
-            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
-            z-index: 90;
-        }
-
-        nav ul.active {
-            right: 0;
-        }
-
-        nav ul li {
-            margin: 15px 0;
-        }
-
-        nav ul li a {
-            font-size: 18px;
-        }
-
-        /* Toggle animation */
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
+        @media (max-width: 946px) {
+    .hamburger {
+        display: block;
     }
 
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 60%;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        padding: 80px 20px 20px;
+        transition: right 0.5s ease-in-out;
+        box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+        z-index: 90;
+    }
+
+    nav ul.active {
+        right: 0;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    nav ul li a {
+        font-size: clamp(14px, 3vw, 18px);
+    }
+
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .hero-background {
+        background-position: 70% center;
+    }
+                .page-hero {
+        background: var(--primary-color);
+        background-size: cover;
+        background-position: center;
+        padding: 25px 5%;
+        height: auto;
+        min-height: 130px;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+    }
+
+    .page-hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .page-hero-title {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+
+    .page-hero-subtitle {
+        font-size: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.4;
+    }
+        }
+
         @media (max-width: 768px) {
-        .reservation-hero h1 {
-                font-size: 2rem;
-        }
-        }
-        @media (max-width: 365px) {
-             nav ul li a {
-                font-size: 12px;
+            .form-row, .form-row-triple {
+                grid-template-columns: 1fr;
+                gap: clamp(8px, 1.5vw, 10px);
             }
         }
 
         @media (max-width: 480px) {
-            .reservation-hero h1 {
-                font-size: 1.8rem;
-            }
-            
             .reservation-form {
-                padding: 25px;
-            }
-
-            .contact-info.visible {
-                max-height: 1000px;
-                padding: 25px;
-            }
-        }
-
-        @media (max-width: 433px) {
-            .reservation-form #reservationForm {       
-                font-size: 12px;
-            }
-            /* Formulaire */
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
+                padding: clamp(20px, 4vw, 25px);
             }
         }
     </style>
@@ -587,9 +626,9 @@
 <body>
     <!-- Header avec menu hamburger -->
     <header>
-        <div class="logo">TAXI-AIBD</div>
+        <div class="logo"><a href="./index.html">TAXI-AIBD</a></div>
         
-        <!-- Hamburger Menu aligné à droite -->
+        <!-- Hamburger Menu -->
         <div class="hamburger">
             <div></div>
             <div></div>
@@ -601,19 +640,22 @@
                 <li><a href="./index.html">ACCUEIL</a></li>
                 <li><a href="./about.html">A PROPOS</a></li>
                 <li><a href="./tarifs.html">NOS TARIFS</a></li>
-                <li><a href="./flottes.html">NOTRE FLOTTE</a></li>
+                <li><a href="./flottes.html">NOS VÉHICULES </a></li>
+                <li><a href="./services.html">NOS SERVICES </a></li>
                 <li><a href="./contact.html">CONTACTEZ-NOUS</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="reservation-hero">
-        <h1>Réservation TAXI-AIBD</h1>
-        <p>Notre équipe est disponible 24h/24 pour répondre à vos demandes de réservations</p>
+    <section class="page-hero">
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">Réservation TAXI-AIBD</h1>
+            <p class="page-hero-subtitle">Notre équipe est disponible 24h/24 pour répondre à vos demandes de réservations</p>
+        </div>
     </section>
 
-    <!-- Contenu Contact -->
+    <!-- Contenu Réservation -->
     <div class="reservation-container">
         <div class="reservation-grid">
             <!-- Colonne Informations avec bouton dépliant -->
@@ -629,7 +671,7 @@
                         <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="info-content">
                             <h3>Téléphone & WhatsApp</h3>
-                            <p><a href="tel:+221766395078">(+221) 77 241 87 61</a></p>
+                            <p><a href="tel:+221772418761">(+221) 77 241 87 61</a></p>
                             <p>Service disponible 24h/24, 7j/7</p>
                         </div>
                     </div>
@@ -647,7 +689,7 @@
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-content">
                             <h3>Zone d'intervention</h3>
-                            <p>Dakar, Saly, etc... (à voir enssemble)</p>
+                            <p>Dakar, Saly, etc... (à voir ensemble)</p>
                             <p>Et toute la région de l'aéroport Blaise Diagne</p>
                         </div>
                     </div>
@@ -680,8 +722,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
                     </div>
                     
                     <div class="form-row">
@@ -690,8 +732,8 @@
                             <input type="text" id="trajet" name="trajet" required readonly class="readonly-field">
                         </div>
                         <div class="form-group">
-                            <label for="vehicule">Véhicule</label>
-                            <input type="text" id="vehicule" name="vehicule" readonly class="readonly-field">
+                            <label for="vehicule">Véhicule <span class="required">*</span></label>
+                            <input type="text" id="vehicule" name="vehicule" required readonly class="readonly-field">
                         </div>
                     </div>
                     
@@ -700,14 +742,24 @@
                             <label for="prix">Prix <span class="required">*</span></label>
                             <input type="text" id="prix" name="prix" required readonly class="readonly-field">
                         </div>
+                    </div>
+
+                    <div class="form-row">
                         <div class="form-group">
                             <label for="passagers">Nombre de passagers <span class="required">*</span></label>
                             <select id="passagers" name="passagers" required>
                                 <option value="">Sélectionner...</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="bagages">Nombre de bagages <span class="required">*</span></label>
+                            <select id="bagages" name="bagages" required>
+                                <option value="">Sélectionner...</option>
+                            </select>
+                        </div>
                     </div>
                     
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="date">Date <span class="required">*</span></label>
@@ -720,16 +772,21 @@
                     </div>
                     
                     <div class="form-group">
+                        <label for="reference-vol">Référence de vol (optionnel)</label>
+                        <input type="text" id="reference-vol" name="reference-vol" placeholder="Ex: AF 718, TK 1234...">
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="message">Informations complémentaires</label>
-                        <textarea id="message" name="message" placeholder="Adresse précise, nombre de bagages, demandes spéciales..."></textarea>
+                        <textarea id="message" name="message" placeholder="Adresse précise de destination, demandes spéciales..."></textarea>
                     </div>
 
                     <div class="info-paiement">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                    <div class="texte-paiement">
-                        <strong>Paiement sécurisé sur place</strong><br>
-                        Espèces, Mobile Money (Orange Money, Wave)
-                    </div>
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <div class="texte-paiement">
+                            <strong>Paiement sécurisé à bord</strong><br>
+                            Espèces, Mobile Money (Orange Money, Wave)
+                        </div>
                     </div>
 
                     <button type="submit" class="btn">Confirmer la réservation</button>
@@ -741,7 +798,7 @@
         </div>
     </div>
 
-    <!-- Footer identique -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
@@ -759,9 +816,10 @@
                 <h3>Liens rapides</h3>
                 <ul>
                     <li><a href="./index.html">Accueil</a></li>
-                    <li><a href="./about.html">À Propos</a></li>
+                    <li><a href="./about.html">À propos</a></li>
                     <li><a href="./tarifs.html">Nos tarifs</a></li>
-                    <li><a href="./flottes.html">Notre flotte</a></li>
+                    <li><a href="./flottes.html">Nos véhicules</a></li>
+                    <li><a href="./services.html">Nos services</a></li>
                     <li><a href="./contact.html">Contactez-nous</a></li>
                 </ul>
             </div>
@@ -792,7 +850,7 @@
     </footer>
 
     <!-- Bouton WhatsApp flottant -->
-    <a href="https://wa.me/221766395078" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/221772418761" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -806,38 +864,74 @@
             button.classList.toggle('active');
         }
 
-        // Fonction pour ajuster les options de passagers selon le véhicule
-        function updatePassengerOptions(vehicleType) {
+        // Fonction pour ajuster les options de passagers selon les données URL
+        function updatePassengerOptions(maxPassagers) {
             const passagersSelect = document.getElementById('passagers');
             
             // Vider les options existantes
             passagersSelect.innerHTML = '<option value="">Sélectionner...</option>';
             
-            // Déterminer le type de véhicule
-            const isMinibus = vehicleType.toLowerCase().includes('minibus') || vehicleType.toLowerCase().includes('8 places');
+            // Convertir maxPassagers en nombre si c'est une chaîne
+            let maxPassagersNum = parseInt(maxPassagers);
             
-            if (isMinibus) {
-                // Pour minibus : 1 à 8 passagers
-                for (let i = 1; i <= 4; i++) {
-                    const option = document.createElement('option');
-                    option.value = i;
-                    option.textContent = i + (i === 1 ? ' passager' : ' passagers');
-                    passagersSelect.appendChild(option);
-                }
-                // Ajouter l'option 5-8 passagers pour minibus
-                const option58 = document.createElement('option');
-                option58.value = '5-8';
-                option58.textContent = '5-8 passagers';
-                passagersSelect.appendChild(option58);
-            } else {
-                // Pour berlines : 1 à 4 passagers seulement
-                for (let i = 1; i <= 4; i++) {
-                    const option = document.createElement('option');
-                    option.value = i;
-                    option.textContent = i + (i === 1 ? ' passager' : ' passagers');
-                    passagersSelect.appendChild(option);
+            // Si c'est une plage comme "5-8", prendre le maximum
+            if (isNaN(maxPassagersNum)) {
+                const match = maxPassagers.toString().match(/(\d+)-(\d+)/);
+                if (match) {
+                    maxPassagersNum = parseInt(match[2]); // Prendre le maximum de la plage
+                } else {
+                    maxPassagersNum = 4; // Valeur par défaut
                 }
             }
+            
+            // Ajouter les options de passagers
+            for (let i = 1; i <= maxPassagersNum; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + (i === 1 ? ' passager' : ' passagers');
+                passagersSelect.appendChild(option);
+            }
+        }
+
+        // Fonction pour ajuster les options de bagages selon les données URL
+        function updateBagageOptions(maxBagages) {
+            const bagagesSelect = document.getElementById('bagages');
+            
+            // Vider les options existantes
+            bagagesSelect.innerHTML = '<option value="">Sélectionner...</option>';
+            
+            let maxBagagesNum, minBagagesNum = 0;
+            
+            // Gérer les différents formats possibles
+            if (typeof maxBagages === 'string' && maxBagages.includes('-')) {
+                // Format "6-8" ou "2-3"
+                const match = maxBagages.match(/(\d+)-(\d+)/);
+                if (match) {
+                    minBagagesNum = parseInt(match[1]);
+                    maxBagagesNum = parseInt(match[2]);
+                }
+            } else {
+                // Format simple "3" ou "5"
+                maxBagagesNum = parseInt(maxBagages);
+                if (isNaN(maxBagagesNum)) {
+                    maxBagagesNum = 3; // Valeur par défaut
+                }
+            }
+            
+            // Ajouter l'option "Aucun bagage"
+            const optionNone = document.createElement('option');
+            optionNone.value = 0;
+            optionNone.textContent = 'Aucun bagage';
+            bagagesSelect.appendChild(optionNone);
+            
+            // Ajouter les options de bagages
+            for (let i = 1; i <= maxBagagesNum; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + (i === 1 ? ' bagage' : ' bagages');
+                bagagesSelect.appendChild(option);
+            }
+        
         }
 
         // Gestion des paramètres URL pour afficher le résumé de réservation
@@ -846,6 +940,8 @@
             const trajet = urlParams.get('trajet');
             const vehicule = urlParams.get('vehicule');
             const prix = urlParams.get('prix');
+            const passagers = urlParams.get('passagers'); // Nouveau paramètre
+            const bagages = urlParams.get('bagages'); // Nouveau paramètre
             
             if (trajet && vehicule && prix) {
                 // Afficher le résumé de réservation
@@ -862,11 +958,24 @@
                 document.getElementById('vehicule').value = vehiculeDecoded;
                 document.getElementById('prix').value = prix + ' FCFA';
                 
-                // Ajuster les options de passagers selon le véhicule sélectionné
-                updatePassengerOptions(vehiculeDecoded);
+                // Ajuster les options de passagers et bagages selon les données de l'URL
+                if (passagers) {
+                    updatePassengerOptions(passagers);
+                } else {
+                    // Valeur par défaut si pas de données passagers
+                    updatePassengerOptions(4);
+                }
+                
+                if (bagages) {
+                    updateBagageOptions(bagages);
+                } else {
+                    // Valeur par défaut si pas de données bagages
+                    updateBagageOptions(3);
+                }
             } else {
-                // Si pas de véhicule pré-sélectionné, utiliser les options par défaut (berline)
-                updatePassengerOptions('berline');
+                // Si pas de véhicule pré-sélectionné, utiliser les options par défaut
+                updatePassengerOptions(4);
+                updateBagageOptions(3);
             }
             
             // Définir la date minimum à aujourd'hui
@@ -874,7 +983,7 @@
             document.getElementById('date').setAttribute('min', today);
             
             // Sur mobile, masquer les coordonnées par défaut
-            if (window.innerWidth <= 480) {
+            if (window.innerWidth <= 950) {
                 document.getElementById('coordonnees-content').classList.remove('visible');
             }
 
@@ -904,6 +1013,13 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
+            // Validation supplémentaire
+            if (!data.nom || !data.telephone || !data.email || !data.trajet || !data.vehicule || 
+                !data.prix || !data.passagers || !data.bagages || !data.date || !data.heure) {
+                alert('Veuillez remplir tous les champs obligatoires.');
+                return;
+            }
+            
             // Ici vous pourriez envoyer les données à votre serveur
             alert('Votre réservation a bien été enregistrée ! Nous vous contacterons dans les plus brefs délais.');
             
@@ -915,16 +1031,19 @@
         function sendWhatsApp() {
             const nom = document.getElementById('nom').value;
             const telephone = document.getElementById('telephone').value;
+            const email = document.getElementById('email').value;
             const trajet = document.getElementById('trajet').value;
             const vehicule = document.getElementById('vehicule').value;
             const prix = document.getElementById('prix').value;
             const passagers = document.getElementById('passagers').value;
+            const bagages = document.getElementById('bagages').value;
             const date = document.getElementById('date').value;
             const heure = document.getElementById('heure').value;
+            const referenceVol = document.getElementById('reference-vol').value;
             const message = document.getElementById('message').value;
             
             // Vérifier les champs obligatoires
-            if (!nom || !telephone || !trajet || !prix || !passagers || !date || !heure) {
+            if (!nom || !telephone || !email || !trajet || !prix || !passagers || !bagages || !date || !heure) {
                 alert('Veuillez remplir tous les champs obligatoires.');
                 return;
             }
@@ -933,12 +1052,18 @@
             let whatsappMessage = `🚖 *RÉSERVATION TAXI-AIBD*\n\n`;
             whatsappMessage += `👤 *Nom :* ${nom}\n`;
             whatsappMessage += `📞 *Téléphone :* ${telephone}\n`;
+            whatsappMessage += `📧 *Email :* ${email}\n`;
             whatsappMessage += `🛣️ *Trajet :* ${trajet}\n`;
             whatsappMessage += `🚗 *Véhicule :* ${vehicule}\n`;
             whatsappMessage += `💰 *Prix :* ${prix}\n`;
             whatsappMessage += `👥 *Passagers :* ${passagers}\n`;
+            whatsappMessage += `🧳 *Bagages :* ${bagages}\n`;
             whatsappMessage += `📅 *Date :* ${date}\n`;
             whatsappMessage += `🕐 *Heure :* ${heure}\n`;
+            
+            if (referenceVol) {
+                whatsappMessage += `✈️ *Référence vol :* ${referenceVol}\n`;
+            }
             
             if (message) {
                 whatsappMessage += `💬 *Message :* ${message}\n`;
@@ -948,7 +1073,7 @@
             const encodedMessage = encodeURIComponent(whatsappMessage);
             
             // Ouvrir WhatsApp
-            const whatsappUrl = `https://wa.me/221766395078?text=${encodedMessage}`;
+            const whatsappUrl = `https://wa.me/221772418761?text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
         }
     </script>
